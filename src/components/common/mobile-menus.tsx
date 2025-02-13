@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { mobile_menu } from '@/data/menu-data';
-import ProductItem from '../products/electronics/product-item';
 import ErrorMsg from './error-msg';
 import { HomeNewArrivalPrdLoader } from '../loader';
 import { useGetProductTypeQuery } from '@/redux/features/productApi';
@@ -13,6 +12,7 @@ import insta_1 from '@assets/img/instagram/4/instagram-1.jpg';
 import insta_3 from '@assets/img/instagram/4/instagram-3.jpg';
 import insta_4 from '@assets/img/instagram/4/instagram-4.jpg';
 import insta_6 from '@assets/img/instagram/4/instagram-6.jpg';
+import ProductItem from '../products/product-item';
 
 // instagram data
 const instagram_data = [

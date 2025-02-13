@@ -8,7 +8,7 @@ import { useGetRelatedProductsQuery } from '@/redux/features/productApi';
 // import { HomeNewArrivalPrdLoader } from '../loader';
 import ErrorMsg from '@/components/common/error-msg';
 import { HomeNewArrivalPrdLoader } from '@/components/loader';
-import ProductItem from '@/components/products/fashion/product-item';
+import ProductItem from '@/components/products/product-item';
 
 // slider setting
 const slider_setting = {

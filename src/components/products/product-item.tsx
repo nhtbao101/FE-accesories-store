@@ -9,11 +9,11 @@ import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 
 const ProductItem = ({ product }) => {
-  const { _id, img, title, price, tags, status } = product || {};
+  const { slug, image, name, price } = product || {};
   const { cart_products } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);
-  const isAddedToCart = cart_products.some((prd) => prd._id === _id);
-  const isAddedToWishlist = wishlist.some((prd) => prd._id === _id);
+  const isAddedToCart = cart_products.some((prd) => prd.slug === slug);
+  const isAddedToWishlist = wishlist.some((prd) => prd.slug === slug);
   const dispatch = useDispatch();
 
   // handle add product
@@ -29,8 +29,8 @@ const ProductItem = ({ product }) => {
   return (
     <div className="tp-product-item-4 p-relative mb-40">
       <div className="tp-product-thumb-4 p-relative fix">
-        <Link href={`/product-details/${_id}`}>
-          <Image src={img} alt="product img" width={284} height={352} />
+        <Link href={`/products/${slug}`}>
+          <Image src={image} alt="product img" width={284} height={352} />
         </Link>
         <div className="tp-product-badge">
           {status === 'out-of-stock' && (
@@ -86,11 +86,11 @@ const ProductItem = ({ product }) => {
       </div>
       <div className="tp-product-content-4">
         <h3 className="tp-product-title-4">
-          <Link href={`/product-details/${_id}`}>{title}</Link>
+          <Link href={`/products/${slug}`}>{name}</Link>
         </h3>
-        <div className="tp-product-info-4">
+        {/* <div className="tp-product-info-4">
           <p>{tags[0]}</p>
-        </div>
+        </div> */}
 
         <div className="tp-product-price-inner-4">
           <div className="tp-product-price-wrapper-4">
