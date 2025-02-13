@@ -11,7 +11,7 @@ import {
 } from '@/redux/features/cartSlice';
 
 const CartItem = ({ product }) => {
-  const { _id, img, title, price, orderQuantity = 0 } = product || {};
+  const { slug, img, title, price, orderQuantity = 0 } = product || {};
 
   const dispatch = useDispatch();
 
@@ -33,13 +33,13 @@ const CartItem = ({ product }) => {
     <tr>
       {/* img */}
       <td className="tp-cart-img">
-        <Link href={`/product-details/${_id}`}>
+        <Link href={`/product-details/${slug}`}>
           <Image src={img} alt="product img" width={70} height={100} />
         </Link>
       </td>
       {/* title */}
       <td className="tp-cart-title">
-        <Link href={`/product-details/${_id}`}>{title}</Link>
+        <Link href={`/product-details/${slug}`}>{title}</Link>
       </td>
       {/* price */}
       <td className="tp-cart-price">

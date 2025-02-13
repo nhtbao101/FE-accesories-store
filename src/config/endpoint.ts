@@ -1,7 +1,8 @@
 const RESOURCES = {
   auth: 'auth',
   admin: 'admin',
-  user: 'user'
+  user: 'user',
+  product: 'product'
 };
 
 export const ENDPOINT = {
@@ -11,5 +12,8 @@ export const ENDPOINT = {
     userSignUp: `${RESOURCES.auth}/signup/user`,
     adminSignIn: `${RESOURCES.auth}/signin/admin`,
     userSignIn: `${RESOURCES.auth}/signin/user`
+  },
+  product: {
+    index: `${RESOURCES.product}`
   }
 };

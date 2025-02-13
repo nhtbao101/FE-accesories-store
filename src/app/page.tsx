@@ -5,7 +5,7 @@ import Wrapper from '@/layout/wrapper';
 import HeaderFour from '@/layout/headers/header-4';
 import JewelryBanner from '@/components/banner/jewelry-banner';
 import JewelryShopBanner from '@/components/shop-banner/jewelry-shop-banner';
-import JewelryAbout from '@/components/about/jewelry-about';
+// import JewelryAbout from '@/components/about/jewelry-about';
 import PopularProducts from '@/components/products/jewelry/popular-products';
 import ProductArea from '@/components/products/jewelry/product-area';
 import JewelryCollectionBanner from '@/components/shop-banner/jewelry-collection-banner';
@@ -23,7 +23,7 @@ const Home = () => {
       <JewelryBanner />
       <FeatureAreaThree />
       <JewelryShopBanner />
-      <JewelryAbout />
+      {/* <JewelryAbout /> */}
       <PopularProducts />
       <ProductArea />
       <JewelryCollectionBanner />
