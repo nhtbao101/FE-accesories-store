@@ -9,7 +9,7 @@ import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 
 const ProductItem = ({ product, prdCenter = false, primary_style = false }) => {
-  const { _id, img, title, discount, price, tags, status } = product || {};
+  const { slug, img, title, discount, price, tags, status } = product || {};
   const { cart_products } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);
   const isAddedToCart = cart_products.some((prd) => prd._id === _id);
@@ -32,7 +32,7 @@ const ProductItem = ({ product, prdCenter = false, primary_style = false }) => {
       } ${prdCenter ? 'text-center' : ''}`}
     >
       <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1">
-        <Link href={`/product-details/${_id}`}>
+        <Link href={`/product-details/${slug}`}>
           <Image src={img} alt="product image" width={282} height={320} />
         </Link>
 
@@ -115,7 +115,7 @@ const ProductItem = ({ product, prdCenter = false, primary_style = false }) => {
           <span>{tags[1]}</span>
         </div>
         <h3 className="tp-product-title-3">
-          <Link href={`/product-details/${_id}`}>{title}</Link>
+          <Link href={`/product-details/${slug}`}>{title}</Link>
         </h3>
         <div className="tp-product-price-wrapper-3">
           <span className="tp-product-price-3">${price.toFixed(2)}</span>

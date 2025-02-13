@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
-import ReviewForm from '../forms/review-form';
-import ReviewItem from './review-item';
+// import ReviewForm from '../forms/review-form';
+// import ReviewItem from './[id]/review-item';
 
 const DetailsTabNav = ({ product }) => {
-  const { _id, description, additionalInformation, reviews } = product || {};
+  const { slug, description, additionalInformation } = product || {};
   const activeRef = useRef(null);
   const marker = useRef(null);
   // handleActive
@@ -20,7 +20,8 @@ const DetailsTabNav = ({ product }) => {
     }
   }, []);
   // nav item
-  function NavItem({ active = false, id, title, linkRef }) {
+  function NavItem(props) {
+    const { active = false, id, title, linkRef } = props;
     return (
       <button
         ref={linkRef}
@@ -32,7 +33,7 @@ const DetailsTabNav = ({ product }) => {
         role="tab"
         aria-controls={`nav-${id}`}
         aria-selected={active ? 'true' : 'false'}
-        tabIndex="-1"
+        tabIndex={0}
         onClick={(e) => handleActive(e)}
       >
         {title}
@@ -56,7 +57,7 @@ const DetailsTabNav = ({ product }) => {
               title="Description"
             />
             <NavItem id="additional" title="Additional information" />
-            <NavItem id="review" title={`Reviews (${reviews.length})`} />
+            {/* <NavItem id="review" title={`Reviews (${reviews.length})`} /> */}
 
             <span
               ref={marker}
@@ -72,7 +73,7 @@ const DetailsTabNav = ({ product }) => {
             id="nav-desc"
             role="tabpanel"
             aria-labelledby="nav-desc-tab"
-            tabIndex="-1"
+            tabIndex={0}
           >
             <div className="tp-product-details-desc-wrapper pt-60">
               <div className="row">
@@ -96,7 +97,7 @@ const DetailsTabNav = ({ product }) => {
             id="nav-additional"
             role="tabpanel"
             aria-labelledby="nav-additional-tab"
-            tabIndex="-1"
+            tabIndex={0}
           >
             <div className="tp-product-details-additional-info ">
               <div className="row justify-content-center">
@@ -121,7 +122,7 @@ const DetailsTabNav = ({ product }) => {
             id="nav-review"
             role="tabpanel"
             aria-labelledby="nav-review-tab"
-            tabIndex="-1"
+            tabIndex={0}
           >
             <div className="tp-product-details-review-wrapper pt-60">
               <div className="row">
@@ -150,7 +151,7 @@ const DetailsTabNav = ({ product }) => {
                       are marked *
                     </p>
                     {/* form start */}
-                    <ReviewForm product_id={_id} />
+                    {/* <ReviewForm product_id={_id} /> */}
                     {/* form end */}
                   </div>
                 </div>

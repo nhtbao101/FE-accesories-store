@@ -8,6 +8,8 @@ import shopFilterSlice from './features/shop-filter-slice';
 import wishlistSlice from './features/wishlist-slice';
 import couponSlice from './features/coupon/couponSlice';
 import orderSlice from './features/order/orderSlice';
+import productsSlice from './features/product/products.slice';
+import productSlice from './features/product/product.slice';
 
 const makeStore = () =>
   configureStore({
@@ -20,7 +22,9 @@ const makeStore = () =>
       wishlist: wishlistSlice,
       compare: compareSlice,
       coupon: couponSlice,
-      order: orderSlice
+      order: orderSlice,
+      products: productsSlice,
+      product: productSlice
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(apiSlice.middleware)
