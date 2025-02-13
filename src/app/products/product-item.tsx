@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { Rating } from 'react-simple-star-rating';
 import Link from 'next/link';
@@ -11,11 +11,16 @@ import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 import { add_to_compare } from '@/redux/features/compareSlice';
 
 const ProductItem = ({ product, style_2 = false }) => {
-  console.log('product fashion', product);
-  const { slug, image, category, name, price, discount, status } =
-    product || {};
-
-  console.log('product', product);
+  const {
+    slug,
+    image,
+    name,
+    // reviews,
+    price,
+    discount,
+    // tags,
+    status
+  } = product || {};
   // const [ratingVal, setRatingVal] = useState(0);
   const { cart_products } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);

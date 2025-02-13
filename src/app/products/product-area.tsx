@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import Pagination from '@/ui/Pagination';
-// import ProductItem from '../products/fashion/product-item';
 import CategoryFilter from './product-filter/category-filter';
-// import ColorFilter from './collection-filter/color-filter';
-// import PriceFilter from './collection-filter/price-filter';
-// import ProductBrand from './collection-filter/product-brand';
-// import StatusFilter from './collection-filter/status-filter';
 import TopRatedProducts from './product-filter/top-rated-products';
 import ShopListItem from './product-list-item';
 import ShopTopLeft from './product-top-left';
 import ShopTopRight from './product-top-right';
 import ResetButton from './product-filter/reset-button';
-import ProductItem from '@/components/products/fashion/product-item';
+import ProductItem from './product-item';
 
 const ShopArea = ({ all_products, products, otherProps }) => {
   console.log('products area', products);

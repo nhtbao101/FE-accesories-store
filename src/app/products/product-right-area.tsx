@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Pagination from '@/ui/Pagination';
-import ProductItem from '../products/fashion/product-item';
+// import ProductItem from '../products/fashion/product-item';
 import CategoryFilter from './product-filter/category-filter';
 // import ColorFilter from './collection-filter/color-filter';
 // import PriceFilter from './collection-filter/price-filter';
@@ -8,9 +8,10 @@ import CategoryFilter from './product-filter/category-filter';
 import StatusFilter from './product-filter/status-filter';
 import TopRatedProducts from './product-filter/top-rated-products';
 import ShopListItem from './product-list-item';
-import CollectionTopLeft from './shop/shop-top-left';
+// import CollectionTopLeft from './shop/shop-top-left';
 import ShopTopRight from './product-top-right';
 import ResetButton from './product-filter/reset-button';
+import CollectionTopLeft from './product-top-left';
 
 const ShopRightArea = ({ all_products, products, otherProps, right_side }) => {
   const { selectHandleFilter, currPage, setCurrPage } = otherProps;
