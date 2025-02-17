@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLoggedOut } from '@/redux/features/auth/authSlice';
+import { useAppSelector } from '@/lib/hook';
 
 // language
 function Language({ active, handleActive }) {
@@ -61,7 +62,7 @@ function Currency({ active, handleActive }) {
 
 // setting
 function ProfileSetting({ active, handleActive }) {
-  const { user } = useSelector((state) => state.auth);
+  const { data } = useAppSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
   // handle logout
@@ -89,12 +90,12 @@ function ProfileSetting({ active, handleActive }) {
           <Link href="/cart">Cart</Link>
         </li>
         <li>
-          {!user?.name && (
+          {!data?.name && (
             <Link href="/login" className="cursor-pointer">
               Login
             </Link>
           )}
-          {user?.name && (
+          {data?.name && (
             <a onClick={handleLogout} className="cursor-pointer">
               Logout
             </a>

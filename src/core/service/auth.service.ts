@@ -36,7 +36,7 @@ export class AuthService extends AuthHelper {
     /* this is the default signIn,
       If you want to override it, please write the same function in specific type of auth.
     */
-    return this.http.post([ENDPOINT.auth.userSignIn], body);
+    return await this.http.post([ENDPOINT.auth.userSignIn], body);
   }
 
   signOut() {

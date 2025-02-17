@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -5,15 +7,19 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
 // internal
 import { CloseEye, OpenEye } from '@/assets/svg';
-import ErrorMsg from '../common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { notifyError, notifySuccess } from '@/utils/toast';
 import { useRegisterUserMutation } from '@/redux/features/auth/authApi';
+import { Register } from '@/core/types/user';
 
 // schema
 const schema = Yup.object().shape({
-  name: Yup.string().required().label('Name'),
+  fullName: Yup.string().required().label('Name'),
   email: Yup.string().required().email().label('Email'),
   password: Yup.string().required().min(6).label('Password'),
+  // address: Yup.string().label('Address'),
+  // phoneNumber: Yup.string().required().min(10).max(11).label('Phone Number'),
+  // avatar: Yup.string().label('Avatar'),
   remember: Yup.bool()
     .oneOf([true], 'You must agree to the terms and conditions to proceed.')
     .label('Terms and Conditions')
@@ -23,7 +29,6 @@ const RegisterForm = () => {
   const [showPass, setShowPass] = useState(false);
   const [registerUser, {}] = useRegisterUserMutation();
   const router = useRouter();
-  const { redirect } = router.query;
   // react hook form
   const {
     register,
@@ -34,17 +39,20 @@ const RegisterForm = () => {
     resolver: yupResolver(schema)
   });
   // on submit
-  const onSubmit = (data) => {
+  const onSubmit = (data: Register) => {
     registerUser({
-      name: data.name,
+      name: data.fullName,
       email: data.email,
       password: data.password
+      // phoneNumber: data.phoneNumber,
+      // address: data.address,
+      // avatar: data.avatar
     }).then((result) => {
       if (result?.error) {
         notifyError('Register Failed');
       } else {
         notifySuccess(result?.data?.message);
-        // router.push(redirect || "/");
+        router.push('/');
       }
     });
     reset();
@@ -55,17 +63,17 @@ const RegisterForm = () => {
         <div className="tp-login-input-box">
           <div className="tp-login-input">
             <input
-              {...register('name', { required: `Name is required!` })}
+              {...register('fullName', { required: `Name is required!` })}
               id="name"
               name="name"
               type="text"
-              placeholder="Shahnewaz Sakil"
+              placeholder="Antony Villa"
             />
           </div>
           <div className="tp-login-input-title">
             <label htmlFor="name">Your Name</label>
           </div>
-          <ErrorMsg msg={errors.name?.message} />
+          <ErrorMsg msg={errors.fullName?.message} />
         </div>
         <div className="tp-login-input-box">
           <div className="tp-login-input">
@@ -74,7 +82,7 @@ const RegisterForm = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="shofy@mail.com"
+              placeholder="accesories-store@gmail.com"
             />
           </div>
           <div className="tp-login-input-title">
@@ -82,6 +90,38 @@ const RegisterForm = () => {
           </div>
           <ErrorMsg msg={errors.email?.message} />
         </div>
+        {/* <div className="tp-login-input-box">
+          <div className="tp-login-input">
+            <input
+              {...register('phoneNumber', {
+                required: 'Phone Number is required!'
+              })}
+              id="phoneNumber"
+              name="phoneNumber"
+              type="number"
+              placeholder="0939939093"
+            />
+          </div>
+          <div className="tp-login-input-title">
+            <label htmlFor="email">Phone Number</label>
+          </div>
+          <ErrorMsg msg={errors.phoneNumber?.message} />
+        </div>
+        <div className="tp-login-input-box">
+          <div className="tp-login-input">
+            <input
+              {...register('address', { required: 'Address is required' })}
+              id="address"
+              name="address"
+              type="text"
+              placeholder="23 An Nhon 11, Da Nang"
+            />
+          </div>
+          <div className="tp-login-input-title">
+            <label htmlFor="name">Address</label>
+          </div>
+          <ErrorMsg msg={errors.address?.message} />
+        </div> */}
         <div className="tp-login-input-box">
           <div className="p-relative">
             <div className="tp-login-input">

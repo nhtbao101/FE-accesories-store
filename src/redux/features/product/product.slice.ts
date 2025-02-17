@@ -24,7 +24,7 @@ export const getProduct = createAsyncThunk(
 );
 
 const productSlice = createSlice({
-  name: 'products',
+  name: 'product',
   initialState,
   reducers: {
     clearProductList: () => initialState
