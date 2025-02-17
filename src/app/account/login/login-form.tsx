@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -6,9 +6,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // internal
 import { CloseEye, OpenEye } from '@/assets/svg';
-import ErrorMsg from '../common/error-msg';
-import { useLoginUserMutation } from '@/redux/features/auth/authApi';
+import ErrorMsg from '../../../components/common/error-msg';
 import { notifyError, notifySuccess } from '@/utils/toast';
+import { Login } from '@/core/types/user';
+import { useAppDispatch, useAppSelector } from '@/lib/hook';
+import { userLogin } from '@/redux/features/auth.slice';
+import { setLS } from '@/core/helpers/storageHelper';
 
 // schema
 const schema = Yup.object().shape({
@@ -16,10 +19,12 @@ const schema = Yup.object().shape({
   password: Yup.string().required().min(6).label('Password')
 });
 const LoginForm = () => {
+  const { isLoading, isSuccess, data, token } = useAppSelector(
+    (state) => state.user
+  );
   const [showPass, setShowPass] = useState(false);
-  const [loginUser, {}] = useLoginUserMutation();
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const { redirect } = router.query;
   // react hook form
   const {
     register,
@@ -30,20 +35,26 @@ const LoginForm = () => {
     resolver: yupResolver(schema)
   });
   // onSubmit
-  const onSubmit = (data) => {
-    loginUser({
-      email: data.email,
-      password: data.password
-    }).then((data) => {
-      if (data?.data) {
-        notifySuccess('Login successfully');
-        router.push(redirect || '/');
-      } else {
-        notifyError(data?.error?.data?.error);
-      }
-    });
-    reset();
+  const onSubmit = (data: Login) => {
+    dispatch(userLogin(data));
   };
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      setLS('userInfo', data);
+      setLS('token', token);
+      notifySuccess('Login successfully');
+      reset();
+      setTimeout(() => {
+        router.push('/');
+      }, 1000);
+    } else {
+      notifyError(data?.error?.data?.error);
+    }
+  }, [isSuccess, data]);
+
+  console.log('data, token', data, token);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="tp-login-input-wrapper">

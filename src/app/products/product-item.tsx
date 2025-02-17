@@ -21,6 +21,8 @@ const ProductItem = ({ product, style_2 = false }) => {
     // tags,
     status
   } = product || {};
+
+  console.log('image', image);
   // const [ratingVal, setRatingVal] = useState(0);
   const { cart_products } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);

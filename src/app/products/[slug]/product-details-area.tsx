@@ -13,7 +13,7 @@ import RelatedProducts from '../related-products';
 const ProductDetailsArea = ({ product }) => {
   const router = useRouter();
 
-  console.log('product', product);
+  console.log('productasx', product);
   const { slug, image, imageURLs, videoId } = product || {};
   const [activeImg, setActiveImg] = useState(image);
 

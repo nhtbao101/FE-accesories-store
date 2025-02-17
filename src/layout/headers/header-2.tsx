@@ -70,7 +70,6 @@ const HeaderTwo = ({ style_2 = false }) => {
               </div>
             </div>
           </div>
-
           <div
             id="header-sticky"
             className={`tp-header-bottom-2 tp-header-sticky ${

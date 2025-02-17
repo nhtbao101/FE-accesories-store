@@ -9,6 +9,7 @@ export class ApiService {
   constructor() {
     this.authHelper = new AuthHelper();
     // Init axiosInstance
+    console.log('environment.apiBaseUrl,', environment.apiBaseUrl);
     this.axiosInstance = axios.create({
       baseURL: environment.apiBaseUrl,
       // Common header
