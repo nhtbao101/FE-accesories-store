@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import LoginShapes from '../login/login-shapes';
+import LoginShapes from '../components/login-shapes';
 import RegisterForm from './register-form';
 // internal
 

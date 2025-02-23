@@ -33,5 +33,5 @@
     "src/assets/svg/test.js",
     "src/layout/headers/header-4.jsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "supabase"]
 }

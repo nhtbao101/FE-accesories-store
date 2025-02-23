@@ -7,9 +7,8 @@ import { useAppSelector } from '@/lib/hook';
 import { useRouter } from 'next/navigation';
 import { UserType } from '@/constant';
 
-const Login = () => {
-  const route = useRouter();
-  const { data } = useAppSelector((state) => state.user);
+const AdminLogin = () => {
+  const { data } = useAppSelector((state) => state.admin);
 
   return (
     <>
@@ -20,18 +19,10 @@ const Login = () => {
             <div className="col-xl-6 col-lg-8">
               <div className="tp-login-wrapper">
                 <div className="tp-login-top text-center mb-30">
-                  <h3 className="tp-login-title">Login to Shofy.</h3>
-                  <p>
-                    Don’t have an account?
-                    <span>
-                      <Link href="/account/register">
-                        Create a free account
-                      </Link>
-                    </span>
-                  </p>
+                  <h3 className="tp-login-title">Login to Shofy by Admin</h3>
                 </div>
                 <div className="tp-login-option">
-                  <LoginForm userType={UserType.user} />
+                  <LoginForm userType={UserType.admin} />
                 </div>
               </div>
             </div>
@@ -42,4 +33,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

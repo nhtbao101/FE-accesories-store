@@ -2,7 +2,8 @@ const RESOURCES = {
   auth: 'auth',
   admin: 'admin',
   user: 'user',
-  product: 'product'
+  product: 'product',
+  category: 'category'
 };
 
 export const ENDPOINT = {
@@ -15,5 +16,8 @@ export const ENDPOINT = {
   },
   product: {
     index: `${RESOURCES.product}`
+  },
+  category: {
+    index: `${RESOURCES.category}`
   }
 };

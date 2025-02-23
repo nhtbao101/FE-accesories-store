@@ -1,0 +1,15 @@
+@use '../../utils' as *;
+
+input[type='text'],
+select {
+  height: 44px;
+}
+
+.product-wrapper {
+  width: 70%;
+  margin: auto;
+
+  .error-msg {
+    color: #f00;
+  }
+}

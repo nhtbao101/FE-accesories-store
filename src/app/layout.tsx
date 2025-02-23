@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@assets/styles/index.scss';
 import StoreProvider from '@/redux/StoreProvider';
+import Wrapper from '@/layout/wrapper';
+import SEO from '@/components/seo';
+import HeaderTwo from '@/layout/headers/header-2';
+import Footer from '@/layout/footers/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +34,14 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {/* <Elements stripe={stripePromise}> */}
-          <div id="root">{children}</div>
+          <div id="root">
+            <Wrapper>
+              <SEO pageTitle="Shop" />
+              <HeaderTwo style_2={true} />
+              {children}
+              <Footer primary_style={true} />
+            </Wrapper>
+          </div>
           {/* </Elements> */}
           {/* {children} */}
         </body>

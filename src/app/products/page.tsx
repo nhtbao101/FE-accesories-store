@@ -59,30 +59,30 @@ const ShopPage = () => {
     currPage,
     setCurrPage
   };
+
   return (
-    <Wrapper>
-      <SEO pageTitle="Shop" />
-      <HeaderTwo style_2={true} />
+    <>
       <ShopBreadcrumb title="Shop Grid" subtitle="Shop Grid" />
       {isLoading ? (
         <ShopLoader loading={isLoading} />
       ) : !error && products?.data?.length === 0 ? (
         <ErrorMsg msg="No Products found!" />
       ) : (
-        <>
-          <ShopArea
-            all_products={products.data}
-            products={products.data}
-            otherProps={otherProps}
-          />
-          <ShopFilterOffCanvas
-            all_products={products.data}
-            otherProps={otherProps}
-          />
-        </>
+        products.data && (
+          <>
+            <ShopArea
+              all_products={products.data}
+              products={products.data}
+              otherProps={otherProps}
+            />
+            <ShopFilterOffCanvas
+              all_products={products.data}
+              otherProps={otherProps}
+            />
+          </>
+        )
       )}
-      <Footer primary_style={true} />
-    </Wrapper>
+    </>
   );
 };
 
