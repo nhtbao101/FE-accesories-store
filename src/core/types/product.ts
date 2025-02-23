@@ -1,11 +1,11 @@
+import { ProductStatus } from '@/constant/product';
+
 export type Product = {
-  title: string;
-  reviews: number;
+  name: string;
+  description: number;
   price: number;
-  discountedPrice: number;
-  id: number;
-  imgs?: {
-    thumbnails: string[];
-    previews: string[];
-  };
+  quantity: number;
+  category: number;
+  status: ProductStatus;
+  images?: string[];
 };

@@ -15,6 +15,7 @@ import { get_wishlist_products } from '@/redux/features/wishlist-slice';
 import { get_compare_products } from '@/redux/features/compareSlice';
 import useAuthCheck from '@/hooks/use-auth-check';
 import Loader from '@/components/loader/loader';
+import { Toast } from '@/utils/toast';
 
 const Wrapper = ({ children }) => {
   const { productItem } = useSelector((state) => state.productModal);
@@ -39,7 +40,7 @@ const Wrapper = ({ children }) => {
     <div id="wrapper">
       {children}
       <BackToTopCom />
-      <ToastContainer />
+      <Toast />
       {/* product modal start */}
       {productItem && <ProductModal />}
       {/* product modal end */}

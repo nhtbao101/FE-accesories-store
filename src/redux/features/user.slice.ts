@@ -22,12 +22,12 @@ export interface User {
 
 export const userLogin = createAsyncThunk(
   'authSlide/userLogin',
-  async (account: LoginData) => {
+  async (account: LoginData, { rejectWithValue }) => {
     try {
       const res = await auth.UserSignIn(account);
       return res;
     } catch (error) {
-      return error;
+      return rejectWithValue(error);
     }
   }
 );
@@ -53,10 +53,12 @@ const userSlice = createSlice({
       state.data = payload.user;
       state.token = payload.token;
       state.isSuccess = true;
+      removeLS('adminInfo');
     });
 
-    builder.addCase(userLogin.rejected, (state) => {
-      state.error = true;
+    builder.addCase(userLogin.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
     });
   }
 });

@@ -1,24 +1,17 @@
-import PopupVideo from '@/components/common/popup-video';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-// import PopupVideo from "../common/popup-video";
 
-const DetailsThumbWrapper = ({
-  imageURLs,
-  handleImageActive,
-  activeImg,
-  imgWidth = 416,
-  imgHeight = 480,
-  videoId = false
-  // status
-}) => {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-  console.log('imageURLs', imageURLs);
-  console.log('activeImg', activeImg);
+const DetailsThumbWrapper = (props: any) => {
+  const {
+    imageURLs,
+    handleImageActive,
+    activeImg,
+    imgWidth = 416,
+    imgHeight = 480
+  } = props;
   return (
     <>
       <div className="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
-        {/* <nav>
+        <nav>
           <div className="nav nav-tabs flex-sm-column">
             {imageURLs?.map((item, i) => (
               <button
@@ -27,7 +20,7 @@ const DetailsThumbWrapper = ({
                 onClick={() => handleImageActive(item)}
               >
                 <Image
-                  src={item.image}
+                  src={item.url}
                   alt="image"
                   width={78}
                   height={100}
@@ -36,12 +29,12 @@ const DetailsThumbWrapper = ({
               </button>
             ))}
           </div>
-        </nav> */}
+        </nav>
         <div className="tab-content m-img">
           <div className="tab-pane fade show active">
             <div className="tp-product-details-nav-main-thumb p-relative">
               <Image
-                src={activeImg}
+                src={activeImg?.url}
                 alt="product img"
                 width={imgWidth}
                 height={imgHeight}

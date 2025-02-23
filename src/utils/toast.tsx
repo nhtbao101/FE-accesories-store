@@ -1,7 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notifySuccess = (message) =>
+const notifySuccess = (message: string) =>
   toast.success(message, {
     position: 'top-center',
     autoClose: 3000,
@@ -9,10 +9,10 @@ const notifySuccess = (message) =>
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    progress: undefined,
+    progress: undefined
   });
 
-const notifyError = (message) =>
+const notifyError = (message: string) =>
   toast.error(message, {
     position: 'top-center',
     autoClose: 3000,
@@ -20,19 +20,23 @@ const notifyError = (message) =>
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    progress: undefined,
+    progress: undefined
   });
 
-<ToastContainer
-  position="top-center"
-  autoClose={3000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-/>;
+const Toast = () => {
+  return (
+    <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+  );
+};
 
-export { ToastContainer, notifySuccess, notifyError };
+export { Toast, notifySuccess, notifyError };

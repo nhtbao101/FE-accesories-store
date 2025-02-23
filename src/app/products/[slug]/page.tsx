@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // internal
 import SEO from '@/components/seo';
 import HeaderTwo from '@/layout/headers/header-2';
@@ -12,37 +12,40 @@ import PrdDetailsLoader from '@/components/loader/prd-details-loader';
 import { useAppDispatch, useAppSelector } from '@/lib/hook';
 import { getProduct } from '@/redux/features/product/product.slice';
 import ProductDetailsArea from './product-details-area';
+import { useParams } from 'next/navigation';
 
 const ProductDetailsPage = () => {
   const dispatch = useAppDispatch();
+  const params = useParams();
+  // example URL /posts/123
+  const { slug } = params;
+  // pid will equal 123
 
   const { isLoading, isSuccess, error, data } = useAppSelector(
     (state) => state.product
   );
+
   useEffect(() => {
-    dispatch(getProduct('ring'));
-  }, []);
-  // decide what to render
-  let content = null;
-  if (isLoading) {
-    content = <PrdDetailsLoader loading={isLoading} />;
-  }
-  if (!isLoading && error) {
-    content = <ErrorMsg msg="There was an error" />;
-  }
-  if (!isLoading && !error && data) {
-    content = (
-      <>
-        <ProductDetailsBreadcrumb category={data.category} title={data.title} />
-        <ProductDetailsArea product={data} />
-      </>
-    );
-  }
+    dispatch(getProduct(slug));
+  }, [slug]);
+
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
       <HeaderTwo style_2={true} />
-      {content}
+      {isLoading ? (
+        <PrdDetailsLoader loading={isLoading} />
+      ) : !isLoading && error ? (
+        <ErrorMsg msg="There was an error" />
+      ) : data ? (
+        <>
+          <ProductDetailsBreadcrumb
+            category={data.category}
+            title={data.title}
+          />
+          <ProductDetailsArea product={data} />
+        </>
+      ) : null}
       <Footer primary_style={true} />
     </Wrapper>
   );

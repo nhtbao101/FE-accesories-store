@@ -13,7 +13,7 @@ import { add_to_compare } from '@/redux/features/compareSlice';
 const ProductItem = ({ product, style_2 = false }) => {
   const {
     slug,
-    image,
+    images,
     name,
     // reviews,
     price,
@@ -22,7 +22,6 @@ const ProductItem = ({ product, style_2 = false }) => {
     status
   } = product || {};
 
-  console.log('image', image);
   // const [ratingVal, setRatingVal] = useState(0);
   const { cart_products } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -59,7 +58,12 @@ const ProductItem = ({ product, style_2 = false }) => {
     <div className={`tp-product-item-2 ${style_2 ? '' : 'mb-40'}`}>
       <div className="tp-product-thumb-2 p-relative z-index-1 fix">
         <Link href={`/products/${slug}`}>
-          <Image src={image} alt="product img" width={284} height={302} />
+          <Image
+            src={images[0]?.url}
+            alt="product img"
+            width={284}
+            height={302}
+          />
         </Link>
         <div className="tp-product-badge">
           {status === 'out-of-stock' && (

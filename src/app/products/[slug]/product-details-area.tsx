@@ -11,27 +11,14 @@ import RelatedProducts from '../related-products';
 // import { getProduct } from '@/redux/features/product/product.slice';
 
 const ProductDetailsArea = ({ product }) => {
-  const router = useRouter();
+  const { slug, images } = product || {};
+  const [activeImg, setActiveImg] = useState(images[0]);
 
-  console.log('productasx', product);
-  const { slug, image, imageURLs, videoId } = product || {};
-  const [activeImg, setActiveImg] = useState(image);
-
-  console.log('image', image);
   // active image change when img change
-
-  console.log('route', router);
-  // console.log('productItem', productItem);
-
-  useEffect(() => {
-    if (product) {
-      setActiveImg(product.image);
-    }
-  }, [product]);
 
   // handle image active
   const handleImageActive = (item) => {
-    setActiveImg(item.image);
+    setActiveImg(item);
   };
   return (
     <>
@@ -45,10 +32,10 @@ const ProductDetailsArea = ({ product }) => {
                   <DetailsThumbWrapper
                     activeImg={activeImg}
                     handleImageActive={handleImageActive}
-                    imageURLs={imageURLs}
+                    imageURLs={images}
                     imgWidth={580}
                     imgHeight={670}
-                    videoId={videoId}
+                    // videoId={videoId}
                     // status={status}
                   />
                   {/* product-details-thumb-wrapper end */}

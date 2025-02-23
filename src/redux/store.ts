@@ -10,7 +10,9 @@ import couponSlice from './features/coupon/couponSlice';
 import orderSlice from './features/order/orderSlice';
 import productsSlice from './features/product/products.slice';
 import productSlice from './features/product/product.slice';
-import userSlice from './features/auth.slice';
+import userSlice from './features/user.slice';
+import adminSlice from './features/admin.slice';
+import categorySlice from './features/category.slice';
 
 const makeStore = () =>
   configureStore({
@@ -26,7 +28,9 @@ const makeStore = () =>
       order: orderSlice,
       products: productsSlice,
       product: productSlice,
-      user: userSlice
+      user: userSlice,
+      admin: adminSlice,
+      category: categorySlice
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(apiSlice.middleware)

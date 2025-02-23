@@ -10,18 +10,35 @@ import ErrorMsg from '../../../components/common/error-msg';
 import { notifyError, notifySuccess } from '@/utils/toast';
 import { Login } from '@/core/types/user';
 import { useAppDispatch, useAppSelector } from '@/lib/hook';
-import { userLogin } from '@/redux/features/auth.slice';
+import { clearUserState, userLogin } from '@/redux/features/user.slice';
 import { setLS } from '@/core/helpers/storageHelper';
+import { UserType } from '@/constant';
+import { adminLogin, clearAdminState } from '@/redux/features/admin.slice';
 
 // schema
 const schema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
   password: Yup.string().required().min(6).label('Password')
 });
-const LoginForm = () => {
-  const { isLoading, isSuccess, data, token } = useAppSelector(
+
+type Props = {
+  userType: UserType;
+};
+
+const LoginForm = (props: Props) => {
+  const { userType } = props;
+  const { isLoading, isSuccess, error, data, token } = useAppSelector(
     (state) => state.user
   );
+
+  const {
+    isLoading: isLoadingAdmin,
+    isSuccess: isLoginAdminSuccess,
+    error: errorLoginAdmin,
+    data: adminData,
+    token: adminToken
+  } = useAppSelector((state) => state.admin);
+
   const [showPass, setShowPass] = useState(false);
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -36,24 +53,52 @@ const LoginForm = () => {
   });
   // onSubmit
   const onSubmit = (data: Login) => {
-    dispatch(userLogin(data));
+    dispatch(userType === UserType.admin ? adminLogin(data) : userLogin(data));
   };
 
   useEffect(() => {
-    if (isSuccess && data) {
-      setLS('userInfo', data);
-      setLS('token', token);
-      notifySuccess('Login successfully');
-      reset();
-      setTimeout(() => {
-        router.push('/');
-      }, 1000);
+    console.log('userType', userType);
+    if (userType === UserType.user) {
+      if (isSuccess && data) {
+        setLS('userInfo', data);
+        setLS('token', token);
+        notifySuccess('Login successfully');
+        reset();
+        setTimeout(() => {
+          router.push('/');
+        }, 1000);
+      }
     } else {
-      notifyError(data?.error?.data?.error);
+      console.log(
+        'isLoginAdminSuccess && adminData',
+        isLoginAdminSuccess,
+        adminData
+      );
+      if (isLoginAdminSuccess && adminData) {
+        setLS('adminInfo', data);
+        setLS('token', adminToken);
+        notifySuccess('Login successfully');
+        setTimeout(() => {
+          reset();
+          router.push('/manage');
+        }, 1000);
+      }
     }
-  }, [isSuccess, data]);
+  }, [isSuccess, isLoginAdminSuccess, data, adminData, token, userType]);
 
-  console.log('data, token', data, token);
+  useEffect(() => {
+    if (!isLoading && error) {
+      notifyError(error);
+    }
+    if (!isLoadingAdmin && errorLoginAdmin) {
+      notifyError(errorLoginAdmin);
+    }
+  }, [error, errorLoginAdmin, isLoading, isLoadingAdmin]);
+
+  useEffect(() => {
+    () => clearUserState();
+    () => clearAdminState();
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +110,7 @@ const LoginForm = () => {
               name="email"
               id="email"
               type="email"
-              placeholder="shofy@mail.com"
+              placeholder="example@mail.com"
             />
           </div>
           <div className="tp-login-input-title">
