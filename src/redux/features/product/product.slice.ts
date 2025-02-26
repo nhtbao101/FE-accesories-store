@@ -1,13 +1,18 @@
+import { initProcessState } from '@/core/interface/redux';
 import { ProductService } from '@/core/service/product.service';
+import { Product } from '@/core/types/product';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const product = new ProductService();
 
 const initialState = {
-  isLoading: false,
-  isSuccess: false,
-  data: null,
-  error: null
+  detail: {
+    isLoading: false,
+    isSuccess: false,
+    data: null,
+    error: null
+  },
+  add: initProcessState
 };
 
 export const getProduct = createAsyncThunk(
@@ -15,10 +20,21 @@ export const getProduct = createAsyncThunk(
   async (slug: string) => {
     try {
       const res = await product.getProduct(slug);
-      console.log('res', res);
       return res;
     } catch (error) {
       return error;
+    }
+  }
+);
+
+export const createProduct = createAsyncThunk(
+  'product/createProduct',
+  async (data: Product, { rejectWithValue }) => {
+    try {
+      const res = await product.createProduct(data);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -27,23 +43,38 @@ const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    clearProductList: () => initialState
+    clearProductList: () => initialState,
+    clearAddProduct: () => initialState
   },
   extraReducers: (builder) => {
-    builder.addCase(getProduct.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(getProduct.fulfilled, (state, { payload }) => {
-      state.data = payload;
-      state.isSuccess = true;
-      state.isLoading = false;
-    });
-    builder.addCase(getProduct.rejected, (state) => {
-      state.isLoading = false;
-    });
+    builder
+      .addCase(getProduct.pending, (state) => {
+        state.detail.isLoading = true;
+      })
+      .addCase(getProduct.fulfilled, (state, { payload }) => {
+        console.log('full fill');
+        state.detail.data = payload;
+        state.detail.isSuccess = true;
+        state.detail.isLoading = false;
+      })
+      .addCase(getProduct.rejected, (state, { payload }) => {
+        state.detail.isLoading = false;
+        state.detail.error = payload;
+      })
+      .addCase(createProduct.pending, (state) => {
+        state.add.isLoading = true;
+      })
+      .addCase(createProduct.fulfilled, (state, { payload }) => {
+        state.add.isSuccess = true;
+        state.add.isLoading = false;
+      })
+      .addCase(createProduct.rejected, (state, { payload }) => {
+        state.add.isLoading = false;
+        state.add.error = payload.message;
+      });
   }
 });
 
-export const { clearProductList } = productSlice.actions;
+export const { clearProductList, clearAddProduct } = productSlice.actions;
 
 export default productSlice.reducer;

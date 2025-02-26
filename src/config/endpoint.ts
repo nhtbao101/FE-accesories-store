@@ -17,6 +17,9 @@ export const ENDPOINT = {
   product: {
     index: `${RESOURCES.product}`
   },
+  manage: {
+    createProduct: `manage/${RESOURCES.product}/create`
+  },
   category: {
     index: `${RESOURCES.category}`
   }

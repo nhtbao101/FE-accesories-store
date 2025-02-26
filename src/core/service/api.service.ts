@@ -54,7 +54,6 @@ export class ApiService {
       );
       this._handleRespond(request, resolve, reject);
     });
-    console.log('post ', post);
     return post;
   }
 

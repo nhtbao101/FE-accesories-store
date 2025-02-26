@@ -59,13 +59,7 @@ const DetailsThumbWrapper = (props: any) => {
         </div>
       </div>
       {/* modal popup start */}
-      {/* {videoId && (
-        <PopupVideo
-          isVideoOpen={isVideoOpen}
-          setIsVideoOpen={setIsVideoOpen}
-          videoId={videoId}
-        />
-      )} */}
+
       {/* modal popup end */}
     </>
   );

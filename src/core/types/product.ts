@@ -7,5 +7,5 @@ export type Product = {
   quantity: number;
   category: number;
   status: ProductStatus;
-  images?: string[];
+  images: string[];
 };
