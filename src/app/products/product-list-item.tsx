@@ -17,6 +17,7 @@ const ShopListItem = (props: Product) => {
   const { product } = props;
   const { slug, image, name, price, discount, description } = product || {};
 
+  console.log('props', props);
   const dispatch = useDispatch();
 
   // handle add product
@@ -37,7 +38,14 @@ const ShopListItem = (props: Product) => {
     <div className="tp-product-list-item d-md-flex">
       <div className="tp-product-list-thumb p-relative fix">
         <Link href={`/products/${slug}`}>
-          <Image src={image} alt="product img" width={350} height={310} />
+          {image?.length && (
+            <Image
+              src={image?.[0]?.url}
+              alt="product img"
+              width={350}
+              height={310}
+            />
+          )}
         </Link>
 
         {/* <!-- product action --> */}

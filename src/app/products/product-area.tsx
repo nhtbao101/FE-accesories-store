@@ -9,8 +9,6 @@ import ResetButton from './product-filter/reset-button';
 import ProductItem from './product-item';
 
 const ShopArea = ({ all_products, products, otherProps }) => {
-  console.log('products area', products);
-
   const { selectHandleFilter, currPage, setCurrPage } = otherProps;
 
   const [filteredRows, setFilteredRows] = useState(products);
@@ -30,7 +28,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
 
   return (
     <>
-      <section className="tp-shop-area pb-120">
+      <section className="tp-shop-area product-wrapper pb-120">
         <div className="container">
           <div className="row">
             <div className="col-xl-3 col-lg-4">

@@ -22,7 +22,7 @@ const ProductDetailsPage = () => {
   // pid will equal 123
 
   const { isLoading, isSuccess, error, data } = useAppSelector(
-    (state) => state.product
+    (state) => state.product.detail
   );
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const ProductDetailsPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
-      <HeaderTwo style_2={true} />
       {isLoading ? (
         <PrdDetailsLoader loading={isLoading} />
       ) : !isLoading && error ? (
