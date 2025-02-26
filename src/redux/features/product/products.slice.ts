@@ -30,7 +30,7 @@ const productsSlice = createSlice({
     builder.addCase(getProducts.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getProducts.fulfilled, (state, { payload }) => {
+    builder.addCase(getProducts.fulfilled, (state: any, { payload }) => {
       state.data = payload;
       state.isSuccess = true;
       state.isLoading = false;

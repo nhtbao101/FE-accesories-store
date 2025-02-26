@@ -5,7 +5,6 @@ const NiceSelect = ({
   options,
   defaultCurrent,
   placeholder,
-  className,
   onChange,
   name
 }: any) => {
@@ -18,7 +17,7 @@ const NiceSelect = ({
 
   useClickAway(ref, onClose);
 
-  const currentHandler = (item) => {
+  const currentHandler = (item: any) => {
     setCurrent(item);
     onChange(item, name);
     onClose();
@@ -26,7 +25,7 @@ const NiceSelect = ({
 
   return (
     <div
-      className={`nice-select ${(className, open && 'open')}`}
+      className={`nice-select ${open && 'open'}`}
       role="button"
       tabIndex={0}
       onClick={() => setOpen((prev) => !prev)}
@@ -40,7 +39,7 @@ const NiceSelect = ({
         onClick={(e) => e.stopPropagation()}
         onKeyPress={(e) => e.stopPropagation()}
       >
-        {options?.map((item) => (
+        {options?.map((item: any) => (
           <li
             key={item.value}
             data-value={item.value}

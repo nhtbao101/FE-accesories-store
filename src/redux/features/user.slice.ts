@@ -48,7 +48,7 @@ const userSlice = createSlice({
       state.isLoading = true;
     });
 
-    builder.addCase(userLogin.fulfilled, (state, { payload }) => {
+    builder.addCase(userLogin.fulfilled, (state: any, { payload }: any) => {
       state.isLoading = false;
       state.data = payload.user;
       state.token = payload.token;
@@ -56,7 +56,7 @@ const userSlice = createSlice({
       removeLS('adminInfo');
     });
 
-    builder.addCase(userLogin.rejected, (state, { payload }) => {
+    builder.addCase(userLogin.rejected, (state: any, { payload }) => {
       state.error = payload;
       state.isLoading = false;
     });

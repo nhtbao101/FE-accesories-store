@@ -4,12 +4,12 @@ export const KEYS = {
   TOKEN_TYPE: 'token_type',
   ID_TOKEN: 'id_token',
   EXPIRES_IN: 'expires_in',
-  I18_NEXT_LNG: 'lang',
+  I18_NEXT_LNG: 'lang'
 };
 
 export const getLS = (key: string) => {
   // TODO: Optimize it
-  return localStorage.getItem(key);
+  return typeof window !== 'undefined' ? localStorage.getItem(key) : null;
 };
 
 export const setLS = (key: string, value: any) => {
