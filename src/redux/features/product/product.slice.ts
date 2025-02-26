@@ -33,7 +33,7 @@ export const createProduct = createAsyncThunk(
     try {
       const res = await product.createProduct(data);
       return res;
-    } catch (error) {
+    } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
   }
@@ -51,13 +51,13 @@ const productSlice = createSlice({
       .addCase(getProduct.pending, (state) => {
         state.detail.isLoading = true;
       })
-      .addCase(getProduct.fulfilled, (state, { payload }) => {
+      .addCase(getProduct.fulfilled, (state: any, { payload }) => {
         console.log('full fill');
         state.detail.data = payload;
         state.detail.isSuccess = true;
         state.detail.isLoading = false;
       })
-      .addCase(getProduct.rejected, (state, { payload }) => {
+      .addCase(getProduct.rejected, (state: any, { payload }) => {
         state.detail.isLoading = false;
         state.detail.error = payload;
       })
@@ -68,7 +68,7 @@ const productSlice = createSlice({
         state.add.isSuccess = true;
         state.add.isLoading = false;
       })
-      .addCase(createProduct.rejected, (state, { payload }) => {
+      .addCase(createProduct.rejected, (state, { payload }: any) => {
         state.add.isLoading = false;
         state.add.error = payload.message;
       });

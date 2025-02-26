@@ -17,9 +17,9 @@ const ShopFilterOffCanvas = ({
   all_products,
   otherProps,
   right_side = false
-}) => {
+}: any) => {
   const { setCurrPage } = otherProps;
-  const { filterSidebar } = useSelector((state) => state.shopFilter);
+  const { filterSidebar } = useSelector((state: any) => state.shopFilter);
   const dispatch = useDispatch();
 
   // max price
@@ -38,7 +38,7 @@ const ShopFilterOffCanvas = ({
           <div className="tp-filter-offcanvas-close">
             <button
               type="button"
-              onClick={() => dispatch(handleFilterSidebarOpen())}
+              onClick={() => dispatch(handleFilterSidebarOpen(null))}
               className="tp-filter-offcanvas-close-btn filter-close-btn"
             >
               <i className="fa-solid fa-xmark"></i> Close
@@ -68,7 +68,7 @@ const ShopFilterOffCanvas = ({
 
       {/* overlay start */}
       <div
-        onClick={() => dispatch(handleFilterSidebarClose())}
+        onClick={() => dispatch(handleFilterSidebarClose(null))}
         className={`body-overlay ${filterSidebar ? 'opened' : ''}`}
       ></div>
       {/* overlay end */}

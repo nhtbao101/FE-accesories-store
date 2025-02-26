@@ -8,7 +8,7 @@ const useSearchFormSubmit = () => {
   const [searchText, setSearchText] = useState('');
   const [category, setCategory] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
 
     if (searchText) {
@@ -19,10 +19,10 @@ const useSearchFormSubmit = () => {
         setCategory('');
       }
 
-      router.push(route, null, { scroll: false });
+      router.push(route, { scroll: false });
       setSearchText('');
     } else {
-      router.push(`/`, null, { scroll: false });
+      router.push(`/`, { scroll: false });
       setSearchText('');
       setCategory('');
     }

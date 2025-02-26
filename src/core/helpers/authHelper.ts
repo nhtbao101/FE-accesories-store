@@ -11,7 +11,7 @@ export interface AuthHelperInterface {
   getUserInfo: () => {};
 }
 
-const strategies = {
+const strategies: any = {
   JWT: JwtHelper,
   __default__: JwtHelper
 };
@@ -55,7 +55,7 @@ export default class AuthHelper extends DynamicAuth {
    * @return {boolean}    `true` : valid token for calling API
    *                      `false`: need to refresh access_token
    */
-  isValidToken(): boolean {
+  isValidToken(): any {
     /**
      * Adding conditions here
      */
@@ -72,7 +72,7 @@ export default class AuthHelper extends DynamicAuth {
   }
 
   setAuthHeader(
-    request: AxiosRequestConfig
+    request: any
   ): Promise<AxiosRequestConfig> | AxiosRequestConfig {
     // Get and check access token
     if (this.isAuthenticated()) {
@@ -93,7 +93,7 @@ export default class AuthHelper extends DynamicAuth {
   //  * @param   [request] - current API request that have expired access_token or get 401 Unauthorized
   //  * @returns Promise<AxiosRequestConfig>
   //  */
-  handleRefreshToken(request: AxiosRequestConfig): Promise<AxiosRequestConfig> {
+  handleRefreshToken(request: AxiosRequestConfig): any { // Promise<AxiosRequestConfig>
     // TODO: handle refresh token
     return null;
   }

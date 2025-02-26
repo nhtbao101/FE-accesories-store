@@ -2,12 +2,12 @@ import React, { useRef, useEffect } from 'react';
 // import ReviewForm from '../forms/review-form';
 // import ReviewItem from './[id]/review-item';
 
-const DetailsTabNav = ({ product }) => {
+const DetailsTabNav = ({ product }: any) => {
   const { slug, description, additionalInformation } = product || {};
-  const activeRef = useRef(null);
-  const marker = useRef(null);
+  const activeRef: any = useRef(null);
+  const marker: any = useRef(null);
   // handleActive
-  const handleActive = (e) => {
+  const handleActive = (e: any) => {
     if (e.target.classList.contains('active')) {
       marker.current.style.left = e.target.offsetLeft + 'px';
       marker.current.style.width = e.target.offsetWidth + 'px';
@@ -20,7 +20,7 @@ const DetailsTabNav = ({ product }) => {
     }
   }, []);
   // nav item
-  function NavItem(props) {
+  function NavItem(props: any) {
     const { active = false, id, title, linkRef } = props;
     return (
       <button
@@ -104,7 +104,7 @@ const DetailsTabNav = ({ product }) => {
                 <div className="col-xl-10">
                   <table>
                     <tbody>
-                      {additionalInformation?.map((item, i) => (
+                      {additionalInformation?.map((item: any, i: number) => (
                         <tr key={i}>
                           <td>{item.key}</td>
                           <td>{item.value}</td>

@@ -41,23 +41,23 @@ export default class JwtHelper
     // return userInfo ? uid === userInfo.uid : false;
   }
 
-  userRole() {
+  userRole(): any {
     return undefined;
     // const userInfo = this.getUserInfo();
     // return userInfo ? userInfo.role : undefined;
   }
 
-  getUserInfo() {
+  getUserInfo(): any {
     const { isTokenValid, token } = this._verifyJWTToken();
     if (isTokenValid) {
-      return jwt.decode(token, { complete: true }).payload;
+      return jwt.decode(token, { complete: true })?.payload;
     } else {
       return null;
     }
   }
 
   private _verifyJWTToken() {
-    const token: string | boolean = this.getToken();
+    const token: any = this.getToken();
     const isTokenValid = jwt.decode(token);
     if (!isTokenValid) {
       this.removeToken();

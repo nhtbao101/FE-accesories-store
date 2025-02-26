@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -61,10 +61,10 @@ const ProductForm = () => {
   } = useAppSelector((state) => state.product.add);
 
   useEffect(() => {
-    if (!categories) {
-      dispatch(getCategory());
+    if (categories) {
+      setValue('categoryId', (categories as any)[0].id);
     } else {
-      setValue('categoryId', categories[0].id);
+      dispatch(getCategory());
     }
     return () => {
       dispatch(clearAddProduct());
@@ -98,7 +98,7 @@ const ProductForm = () => {
     }
   }, [error]);
 
-  const onChangeImg = async (e) => {
+  const onChangeImg = async (e: any) => {
     const imgList: any = Array.from(e.target.files);
     const imgURLList = imgList.map((img: File) => URL.createObjectURL(img));
 
@@ -142,7 +142,7 @@ const ProductForm = () => {
 
     const bodyData = {
       ...productData,
-      images: imgUpload.map((img, index: number) => {
+      images: imgUpload.map((img: any, index: number) => {
         return {
           url: `${process.env.NEXT_PUBLIC_SUPABASE_DEV}/storage/v1/object/public/${img.fullPath}`,
           imageName: (prodImg[index] as File).name.split('.')[0]
@@ -155,7 +155,6 @@ const ProductForm = () => {
     await dispatch(createProduct(bodyData));
   };
 
-  console.log('isSuccess', isSuccess);
   return (
     <>
       {isLoading ? (
@@ -254,7 +253,7 @@ const ProductForm = () => {
                             value={value ?? ''}
                             onChange={(e) => onChange(e.target.value)}
                           >
-                            {categories?.map(
+                            {(categories as any)?.map(
                               (category: ICategory, i: number) => (
                                 <option value={category.id} key={i}>
                                   {category.name}

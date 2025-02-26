@@ -15,7 +15,7 @@ const OffCanvas = ({
   isOffCanvasOpen,
   setIsCanvasOpen,
   categoryType = 'electronics'
-}) => {
+}: any) => {
   const [isCategoryActive, setIsCategoryActive] = useState(false);
   const [isCurrencyActive, setIsCurrencyActive] = useState(false);
   const [isLanguageActive, setIsLanguageActive] = useState(false);

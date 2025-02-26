@@ -15,7 +15,8 @@ type Product = {
 };
 const ShopListItem = (props: Product) => {
   const { product } = props;
-  const { slug, image, name, price, discount, description } = product || {};
+  const { slug, image, name, price, discount, description }: any =
+    product || {};
 
   console.log('props', props);
   const dispatch = useDispatch();

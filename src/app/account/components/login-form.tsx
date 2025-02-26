@@ -116,7 +116,7 @@ const LoginForm = (props: Props) => {
           <div className="tp-login-input-title">
             <label htmlFor="email">Your Email</label>
           </div>
-          <ErrorMsg msg={errors.email?.message} />
+          <ErrorMsg msg={errors?.email?.message} />
         </div>
         <div className="tp-login-input-box">
           <div className="p-relative">
