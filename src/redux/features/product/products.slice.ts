@@ -13,7 +13,6 @@ const initialState = {
 export const getProducts = createAsyncThunk('product/getProducts', async () => {
   try {
     const res = await productService.getProducts();
-    console.log('res', res);
     return res;
   } catch (error) {
     return error;

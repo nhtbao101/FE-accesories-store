@@ -18,7 +18,6 @@ const ShopListItem = (props: Product) => {
   const { slug, image, name, price, discount, description }: any =
     product || {};
 
-  console.log('props', props);
   const dispatch = useDispatch();
 
   // handle add product

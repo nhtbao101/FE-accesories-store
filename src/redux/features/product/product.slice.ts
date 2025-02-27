@@ -52,7 +52,6 @@ const productSlice = createSlice({
         state.detail.isLoading = true;
       })
       .addCase(getProduct.fulfilled, (state: any, { payload }) => {
-        console.log('full fill');
         state.detail.data = payload;
         state.detail.isSuccess = true;
         state.detail.isLoading = false;

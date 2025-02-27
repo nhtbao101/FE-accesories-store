@@ -128,8 +128,6 @@ const ProductForm = () => {
     return res;
   };
 
-  console.log('error create', error);
-
   const onSubmit = async (productData: any) => {
     const imgUpload = await uploadImage(prodImg)
       .then((res) => {
