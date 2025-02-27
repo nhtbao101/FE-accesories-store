@@ -57,7 +57,6 @@ const LoginForm = (props: Props) => {
   };
 
   useEffect(() => {
-    console.log('userType', userType);
     if (userType === UserType.user) {
       if (isSuccess && data) {
         setLS('userInfo', data);
@@ -69,11 +68,6 @@ const LoginForm = (props: Props) => {
         }, 1000);
       }
     } else {
-      console.log(
-        'isLoginAdminSuccess && adminData',
-        isLoginAdminSuccess,
-        adminData
-      );
       if (isLoginAdminSuccess && adminData) {
         setLS('adminInfo', data);
         setLS('token', adminToken);
@@ -116,7 +110,7 @@ const LoginForm = (props: Props) => {
           <div className="tp-login-input-title">
             <label htmlFor="email">Your Email</label>
           </div>
-          <ErrorMsg msg={errors.email?.message} />
+          <ErrorMsg msg={errors?.email?.message} />
         </div>
         <div className="tp-login-input-box">
           <div className="p-relative">

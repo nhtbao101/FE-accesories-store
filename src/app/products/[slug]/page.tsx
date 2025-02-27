@@ -18,10 +18,10 @@ const ProductDetailsPage = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
   // example URL /posts/123
-  const { slug } = params;
+  const { slug }: any = params;
   // pid will equal 123
 
-  const { isLoading, isSuccess, error, data } = useAppSelector(
+  const { isLoading, isSuccess, error, data }: any = useAppSelector(
     (state) => state.product.detail
   );
 

@@ -67,7 +67,7 @@ const BestSellerPrd = () => {
         modules={[Scrollbar]}
         className="tp-best-slider-active swiper-container mb-10"
       >
-        {product_items.map((item, index: number) => (
+        {product_items.map((item: any, index: number) => (
           <SwiperSlide key={index} className="tp-best-item-4">
             <ProductItem product={item} />
           </SwiperSlide>

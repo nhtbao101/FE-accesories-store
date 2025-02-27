@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import BackToTop from '@/lib/back-to-top';
 
-function BackToTopCom({ cls }) {
+function BackToTopCom({ cls }: any) {
   useEffect(() => {
     BackToTop('.back-to-top-wrapper');
   }, []);

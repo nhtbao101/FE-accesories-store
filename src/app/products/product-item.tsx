@@ -9,8 +9,9 @@ import { handleProductModal } from '@/redux/features/productModalSlice';
 import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 import { add_to_compare } from '@/redux/features/compareSlice';
+import { Product } from '@/core/types/product';
 
-const ProductItem = ({ product, style_2 = false }) => {
+const ProductItem = ({ product, style_2 = false }: any) => {
   const {
     slug,
     images,
@@ -23,10 +24,10 @@ const ProductItem = ({ product, style_2 = false }) => {
   } = product || {};
 
   // const [ratingVal, setRatingVal] = useState(0);
-  const { cart_products } = useSelector((state) => state.cart);
-  const { wishlist } = useSelector((state) => state.wishlist);
-  const isAddedToCart = cart_products.some((prd) => prd.slug === slug);
-  const isAddedToWishlist = wishlist.some((prd) => prd.slug === slug);
+  const { cart_products }: any = useSelector((state: any) => state.cart);
+  const { wishlist }: any = useSelector((state: any) => state.wishlist);
+  const isAddedToCart = cart_products.some((prd: any) => prd.slug === slug);
+  const isAddedToWishlist = wishlist.some((prd: any) => prd.slug === slug);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -41,16 +42,16 @@ const ProductItem = ({ product, style_2 = false }) => {
   // }, [reviews]);
 
   // handle add product
-  const handleAddProduct = (prd) => {
+  const handleAddProduct = (prd: Product) => {
     dispatch(add_cart_product(prd));
   };
   // handle wishlist product
-  const handleWishlistProduct = (prd) => {
+  const handleWishlistProduct = (prd: Product) => {
     dispatch(add_to_wishlist(prd));
   };
 
   // handle compare product
-  const handleCompareProduct = (prd) => {
+  const handleCompareProduct = (prd: Product) => {
     dispatch(add_to_compare(prd));
   };
 

@@ -10,14 +10,14 @@ import DetailsTabNav from './details-tab-nav';
 import RelatedProducts from '../related-products';
 // import { getProduct } from '@/redux/features/product/product.slice';
 
-const ProductDetailsArea = ({ product }) => {
+const ProductDetailsArea = ({ product }: any) => {
   const { slug, images } = product || {};
   const [activeImg, setActiveImg] = useState(images[0]);
 
   // active image change when img change
 
   // handle image active
-  const handleImageActive = (item) => {
+  const handleImageActive = (item: any) => {
     setActiveImg(item);
   };
   return (

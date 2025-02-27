@@ -9,7 +9,7 @@ const HeaderSearchForm = () => {
     useSearchFormSubmit();
 
   // selectHandle
-  const selectCategoryHandle = (e) => {
+  const selectCategoryHandle = (e: any) => {
     setCategory(e.value);
   };
 

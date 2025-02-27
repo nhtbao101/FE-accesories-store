@@ -30,13 +30,14 @@
     "react-timer-hook": "^3.0.8",
     "react-toastify": "^11.0.3",
     "react-use": "^17.6.0",
-    "sass": "^1.84.0",
+    "sass": "^1.77.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.2",
     "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

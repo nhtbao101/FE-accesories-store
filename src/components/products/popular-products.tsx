@@ -69,7 +69,7 @@ const PopularProducts = () => {
         modules={[Scrollbar, Pagination]}
         className="tp-category-slider-active-4 swiper-container mb-70"
       >
-        {product_items.map((item) => (
+        {product_items.map((item: any) => (
           <SwiperSlide key={item._id}>
             <ProductSliderItem product={item} />
           </SwiperSlide>

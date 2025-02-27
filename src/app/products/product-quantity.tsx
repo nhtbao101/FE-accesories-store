@@ -5,7 +5,7 @@ import { Minus, Plus } from '@/assets/svg';
 import { decrement, increment } from '@/redux/features/cartSlice';
 
 const ProductQuantity = () => {
-  const { orderQuantity } = useSelector((state) => state.cart);
+  const { orderQuantity } = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
   // handleIncrease
   const handleIncrease = () => {

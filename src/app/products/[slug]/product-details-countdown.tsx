@@ -3,7 +3,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import Timer from '@/components/common/timer';
 
-const ProductDetailsCountdown = ({ offerExpiryTime }) => {
+const ProductDetailsCountdown = ({ offerExpiryTime }: any) => {
   return (
     <div className="tp-product-details-countdown d-flex align-items-center justify-content-between flex-wrap mt-25 mb-25">
       <h4 className="tp-product-details-countdown-title">

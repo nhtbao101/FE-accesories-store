@@ -8,14 +8,22 @@ import ShopTopRight from './product-top-right';
 import ResetButton from './product-filter/reset-button';
 import ProductItem from './product-item';
 
-const ShopArea = ({ all_products, products, otherProps }) => {
+const ShopArea = ({
+  all_products,
+  products,
+  otherProps
+}: {
+  all_products: any;
+  products: any;
+  otherProps: any;
+}) => {
   const { selectHandleFilter, currPage, setCurrPage } = otherProps;
 
   const [filteredRows, setFilteredRows] = useState(products);
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
 
-  const paginatedData = (items, startPage, pageCount) => {
+  const paginatedData = (items: any, startPage: any, pageCount: any) => {
     setFilteredRows(items);
     setPageStart(startPage);
     setCountOfPage(pageCount);
@@ -90,7 +98,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                           {filteredRows &&
                             filteredRows
                               .slice(pageStart, pageStart + countOfPage)
-                              .map((item, index: number) => (
+                              .map((item: any, index: number) => (
                                 <div
                                   key={index}
                                   className="col-xl-4 col-md-6 col-sm-6"
@@ -113,7 +121,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                               {filteredRows &&
                                 filteredRows
                                   .slice(pageStart, pageStart + countOfPage)
-                                  .map((item, index: number) => (
+                                  .map((item: any, index: number) => (
                                     <ShopListItem key={index} product={item} />
                                   ))}
                             </div>

@@ -25,7 +25,7 @@ import useSearchFormSubmit from '@/hooks/use-search-form-submit';
 import OffCanvas from '@/components/common/off-canvas';
 
 const HeaderTwo = ({ style_2 = false }) => {
-  const { wishlist } = useSelector((state) => state.wishlist);
+  const { wishlist } = useSelector((state: any) => state.wishlist);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
   const { setSearchText, handleSubmit, searchText } = useSearchFormSubmit();
   const { quantity } = useCartInfo();
@@ -130,7 +130,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                         </div>
                         <div className="tp-header-action-item">
                           <button
-                            onClick={() => dispatch(openCartMini())}
+                            onClick={() => dispatch(openCartMini(null))}
                             className="tp-header-action-btn cartmini-open-btn"
                           >
                             <CartTwo />

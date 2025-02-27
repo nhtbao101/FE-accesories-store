@@ -8,9 +8,15 @@ import { useGetTopRatedProductsQuery } from '@/redux/features/productApi';
 import ShopTopRatedLoader from '@/components/loader/shop/top-rated-prd-loader';
 
 const TopRatedProducts = () => {
-  const { data: products, isError, isLoading } = useGetTopRatedProductsQuery();
+  const {
+    data: products,
+    isError,
+    isLoading
+  } = useGetTopRatedProductsQuery(null);
   // decide what to render
   let content = null;
+
+  console.log('top rate products', products);
 
   if (isLoading) {
     content = <ShopTopRatedLoader loading={isLoading} />;
@@ -20,7 +26,7 @@ const TopRatedProducts = () => {
     content = <ErrorMsg msg="No Products found!" />;
   } else if (!isLoading && !isError && products?.data?.length > 0) {
     const product_items = products.data.slice(0, 3);
-    content = product_items.map((item) => (
+    content = product_items.map((item: any) => (
       <div
         key={item._id}
         className="tp-shop-widget-product-item d-flex align-items-center"

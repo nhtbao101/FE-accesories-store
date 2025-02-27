@@ -12,12 +12,18 @@ import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 import { add_to_compare } from '@/redux/features/compareSlice';
 import { handleModalClose } from '@/redux/features/productModalSlice';
 import ProductDetailsCountdown from './product-details-countdown';
+import { Product } from '@/core/types/product';
 
 const DetailsWrapper = ({
   productItem,
   handleImageActive,
   activeImg,
   detailsBottom = false
+}: {
+  productItem: any;
+  handleImageActive: any;
+  activeImg: any;
+  detailsBottom: boolean;
 }) => {
   const {
     sku,
@@ -48,17 +54,17 @@ const DetailsWrapper = ({
   // }, [reviews]);
 
   // handle add product
-  const handleAddProduct = (prd) => {
+  const handleAddProduct = (prd: Product) => {
     dispatch(add_cart_product(prd));
   };
 
   // handle wishlist product
-  const handleWishlistProduct = (prd) => {
+  const handleWishlistProduct = (prd: Product) => {
     dispatch(add_to_wishlist(prd));
   };
 
   // handle compare product
-  const handleCompareProduct = (prd) => {
+  const handleCompareProduct = (prd: Product) => {
     dispatch(add_to_compare(prd));
   };
 
@@ -172,7 +178,10 @@ const DetailsWrapper = ({
             </button>
           </div>
         </div>
-        <Link href="/cart" onClick={() => dispatch(handleModalClose())}>
+        <Link
+          href="/cart"
+          // onClick={() => dispatch(handleModalClose())}
+        >
           <button className="tp-product-details-buy-now-btn w-100">
             Buy Now
           </button>

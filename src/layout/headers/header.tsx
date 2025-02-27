@@ -22,9 +22,10 @@ import CartMiniSidebar from '@/components/common/cart-mini-sidebar';
 import { openCartMini } from '@/redux/features/cartSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hook';
 import { useRouter } from 'next/navigation';
+import { userLoggedOut } from '@/redux/features/auth/authSlice';
 
 // setting
-function ProfileSetting({ active, handleActive }) {
+function ProfileSetting({ active, handleActive }: any) {
   const { data } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -74,7 +75,7 @@ const Header = () => {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
-  const { wishlist } = useSelector((state) => state.wishlist);
+  const { wishlist } = useSelector((state: any) => state.wishlist);
   const { quantity } = useCartInfo();
   const { sticky } = useSticky();
   const dispatch = useDispatch();
@@ -143,7 +144,7 @@ const Header = () => {
                     </div>
                     <div className="tp-header-action-item d-none d-sm-block">
                       <button
-                        onClick={() => dispatch(openCartMini())}
+                        onClick={() => dispatch(openCartMini(null))}
                         type="button"
                         className="tp-header-action-btn cartmini-open-btn"
                       >

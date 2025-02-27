@@ -8,7 +8,7 @@ import banner_bg_3 from '@assets/img/banner/4/banner-3.jpg';
 import banner_bg_4 from '@assets/img/banner/4/banner-4.jpg';
 
 // BannerItem
-function BannerItem({ cls, bg_clr, bg, content, title, isBtn = false }) {
+function BannerItem({ cls, bg_clr, bg, content, title, isBtn = false }: any) {
   return (
     <div
       className={`tp-banner-item-4 tp-banner-height-4 fix p-relative z-index-1 ${cls}`}

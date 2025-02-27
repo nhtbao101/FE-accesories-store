@@ -8,21 +8,21 @@ import { handleProductModal } from '@/redux/features/productModalSlice';
 import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product }: any) => {
   const { slug, image, name, price } = product || {};
-  const { cart_products } = useSelector((state) => state.cart);
-  const { wishlist } = useSelector((state) => state.wishlist);
-  const isAddedToCart = cart_products.some((prd) => prd.slug === slug);
-  const isAddedToWishlist = wishlist.some((prd) => prd.slug === slug);
+  const { cart_products } = useSelector((state: any) => state.cart);
+  const { wishlist } = useSelector((state: any) => state.wishlist);
+  const isAddedToCart = cart_products.some((prd: any) => prd.slug === slug);
+  const isAddedToWishlist = wishlist.some((prd: any) => prd.slug === slug);
   const dispatch = useDispatch();
 
   // handle add product
-  const handleAddProduct = (prd) => {
+  const handleAddProduct = (prd: any) => {
     dispatch(add_cart_product(prd));
   };
 
   // handle wishlist product
-  const handleWishlistProduct = (prd) => {
+  const handleWishlistProduct = (prd: any) => {
     dispatch(add_to_wishlist(prd));
   };
 

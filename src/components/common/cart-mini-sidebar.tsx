@@ -9,18 +9,20 @@ import empty_cart_img from '@assets/img/product/cartmini/empty-cart.png';
 import { closeCartMini, remove_product } from '@/redux/features/cartSlice';
 
 const CartMiniSidebar = () => {
-  const { cart_products, cartMiniOpen } = useSelector((state) => state.cart);
+  const { cart_products, cartMiniOpen } = useSelector(
+    (state: any) => state.cart
+  );
   const { total } = useCartInfo();
   const dispatch = useDispatch();
 
   // handle remove product
-  const handleRemovePrd = (prd) => {
+  const handleRemovePrd = (prd: any) => {
     dispatch(remove_product(prd));
   };
 
   // handle close cart mini
   const handleCloseCartMini = () => {
-    dispatch(closeCartMini());
+    dispatch(closeCartMini(null));
   };
   return (
     <>
@@ -37,7 +39,7 @@ const CartMiniSidebar = () => {
               </div>
               <div className="cartmini__close">
                 <button
-                  onClick={() => dispatch(closeCartMini())}
+                  onClick={() => dispatch(closeCartMini(null))}
                   type="button"
                   className="cartmini__close-btn cartmini-close-btn"
                 >
@@ -50,7 +52,7 @@ const CartMiniSidebar = () => {
             </div>
             {cart_products.length > 0 && (
               <div className="cartmini__widget">
-                {cart_products.map((item, index: number) => (
+                {cart_products.map((item: any, index: number) => (
                   <div key={index} className="cartmini__widget-item">
                     <div className="cartmini__thumb">
                       <Link href={`/products/${index}`}>

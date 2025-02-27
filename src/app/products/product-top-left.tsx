@@ -1,7 +1,7 @@
 import { GridTab, ListTab } from '@/assets/svg';
 import React from 'react';
 
-const CollectionTopLeft = ({ total, showing = 9 }) => {
+const CollectionTopLeft = ({ total, showing = 9 }: any) => {
   return (
     <>
       <div className="tp-shop-top-left d-flex align-items-center">

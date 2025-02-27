@@ -53,7 +53,7 @@ const MobileMenus = () => {
 
     content = (
       <div className="row">
-        {product_items.slice(0, 4).map((item) => (
+        {product_items.slice(0, 4).map((item: any) => (
           <div key={item._id} className="col-md-3">
             <ProductItem product={item} />
           </div>
@@ -66,7 +66,7 @@ const MobileMenus = () => {
   }
 
   // handleOpenSubMenu
-  const handleOpenSubMenu = (title) => {
+  const handleOpenSubMenu = (title: string) => {
     if (title === isActiveMenu) {
       setIsActiveMenu('');
     } else {

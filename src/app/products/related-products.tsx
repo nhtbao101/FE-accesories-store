@@ -40,7 +40,7 @@ const slider_setting = {
   }
 };
 
-const RelatedProducts = ({ id }) => {
+const RelatedProducts = ({ id }: any) => {
   const { data: products, isError, isLoading } = useGetRelatedProductsQuery(id);
   // decide what to render
   let content = null;
@@ -63,7 +63,7 @@ const RelatedProducts = ({ id }) => {
         modules={[Autoplay, Navigation]}
         className="tp-product-related-slider-active swiper-container mb-10"
       >
-        {product_items.map((item, index: number) => (
+        {product_items.map((item: any, index: number) => (
           <SwiperSlide key={index}>
             <ProductItem product={item} primary_style={true} />
           </SwiperSlide>

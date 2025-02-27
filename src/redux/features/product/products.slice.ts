@@ -13,7 +13,6 @@ const initialState = {
 export const getProducts = createAsyncThunk('product/getProducts', async () => {
   try {
     const res = await productService.getProducts();
-    console.log('res', res);
     return res;
   } catch (error) {
     return error;
@@ -30,7 +29,7 @@ const productsSlice = createSlice({
     builder.addCase(getProducts.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getProducts.fulfilled, (state, { payload }) => {
+    builder.addCase(getProducts.fulfilled, (state: any, { payload }) => {
       state.data = payload;
       state.isSuccess = true;
       state.isLoading = false;
