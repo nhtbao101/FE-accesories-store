@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -37,7 +37,12 @@ const schema = Yup.object().shape({
   images: Yup.array().required().label('Images')
 });
 
-const ProductForm = () => {
+type Props = {
+  isUpdate?: boolean;
+  data?: any;
+};
+
+const ProductForm = (props: Props) => {
   const {
     handleSubmit,
     control,
@@ -45,8 +50,10 @@ const ProductForm = () => {
     formState: { errors },
     reset
   } = useForm({
+    defaultValues: props.data,
     resolver: yupResolver(schema)
   });
+
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -60,11 +67,20 @@ const ProductForm = () => {
     isSuccess
   } = useAppSelector((state) => state.product.add);
 
+  // console.log('product form data prop', props.data);
+  // console.log(
+  //   'product form',
+  //   useAppSelector((state) => state.product)
+  // );
+
   useEffect(() => {
+    // console.log('mount category');
     if (categories) {
-      setValue('categoryId', (categories as any)[0].id);
+      console.log('has category');
+      // setValue('categoryId', (categories as any)[0].id);
     } else {
-      dispatch(getCategory());
+      console.log('get category');
+      // dispatch(getCategory());
     }
     return () => {
       dispatch(clearAddProduct());
