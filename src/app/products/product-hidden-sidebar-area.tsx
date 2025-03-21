@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import Pagination from '@/ui/Pagination';
 
-import ProductItem from '@/components/products/fashion/product-item';
+// import ProductItem from '@/components/products/fashion/product-item';
 import ShopListItem from './product-list-item';
 import CollectionTopLeft from './product-top-left';
 import ShopTopRight from './product-top-right';
+import ProductItem from './product-item';
 
-const ShopHiddenSidebarArea = ({ all_products, products, otherProps }) => {
+const ShopHiddenSidebarArea = ({ all_products, products, otherProps }: any) => {
   const { currPage, setCurrPage, selectHandleFilter } = otherProps;
   const [filteredRows, setFilteredRows] = useState(products);
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
 
-  const paginatedData = (items, startPage, pageCount) => {
+  const paginatedData = (items: any, startPage: any, pageCount: any) => {
     setFilteredRows(items);
     setPageStart(startPage);
     setCountOfPage(pageCount);
@@ -61,7 +62,7 @@ const ShopHiddenSidebarArea = ({ all_products, products, otherProps }) => {
                           {filteredRows &&
                             filteredRows
                               .slice(pageStart, pageStart + countOfPage)
-                              .map((item, index: number) => (
+                              .map((item: any, index: number) => (
                                 <div
                                   key={index}
                                   className="col-xl-3 col-lg-4 col-md-6 col-sm-6"
@@ -84,7 +85,7 @@ const ShopHiddenSidebarArea = ({ all_products, products, otherProps }) => {
                               {filteredRows &&
                                 filteredRows
                                   .slice(pageStart, pageStart + countOfPage)
-                                  .map((item) => (
+                                  .map((item: any) => (
                                     <ShopListItem
                                       key={item._id}
                                       product={item}

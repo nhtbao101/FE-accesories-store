@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const SEO = (props) => {
+const SEO = (props: any) => {
   const pageTitle = props;
   return (
     <>

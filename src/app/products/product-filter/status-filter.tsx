@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { handleFilterSidebarClose } from '@/redux/features/shop-filter-slice';
 
-const StatusFilter = ({ setCurrPage, shop_right = false }) => {
+const StatusFilter = ({ setCurrPage, shop_right = false }: any) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -11,7 +11,7 @@ const StatusFilter = ({ setCurrPage, shop_right = false }) => {
   const status = ['On sale', 'In Stock'];
 
   // handle status route
-  const handleStatusRoute = (status) => {
+  const handleStatusRoute = (status: any) => {
     setCurrPage(1);
     router.push(
       `/${shop_right ? 'shop-right-sidebar' : 'collections'}?status=${status
@@ -20,7 +20,7 @@ const StatusFilter = ({ setCurrPage, shop_right = false }) => {
         .split(' ')
         .join('-')}`
     );
-    dispatch(handleFilterSidebarClose());
+    // dispatch(handleFilterSidebarClose());
   };
   return (
     <div className="tp-shop-widget mb-50">
@@ -36,8 +36,6 @@ const StatusFilter = ({ setCurrPage, shop_right = false }) => {
                   checked={
                     searchParams.get('status') ===
                     s.toLowerCase().replace('&', '').split(' ').join('-')
-                      ? 'checked'
-                      : false
                   }
                   readOnly
                 />

@@ -8,16 +8,16 @@ import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 import { notifyError } from '@/utils/toast';
 
-const ProductSliderItem = ({ product }) => {
+const ProductSliderItem = ({ product }: any) => {
   const { _id, title, price, img, status } = product || {};
-  const { cart_products } = useSelector((state) => state.cart);
-  const { wishlist } = useSelector((state) => state.wishlist);
-  const isAddedToCart = cart_products.some((prd) => prd._id === _id);
-  const isAddedToWishlist = wishlist.some((prd) => prd._id === _id);
+  const { cart_products } = useSelector((state: any) => state.cart);
+  const { wishlist } = useSelector((state: any) => state.wishlist);
+  const isAddedToCart = cart_products.some((prd: any) => prd._id === _id);
+  const isAddedToWishlist = wishlist.some((prd: any) => prd._id === _id);
   const dispatch = useDispatch();
 
   // handle add product
-  const handleAddProduct = (prd) => {
+  const handleAddProduct = (prd: any) => {
     if (prd.status === 'out-of-stock') {
       notifyError(`This product out-of-stock`);
     } else {
@@ -25,7 +25,7 @@ const ProductSliderItem = ({ product }) => {
     }
   };
   // handle wishlist product
-  const handleWishlistProduct = (prd) => {
+  const handleWishlistProduct = (prd: any) => {
     dispatch(add_to_wishlist(prd));
   };
   return (

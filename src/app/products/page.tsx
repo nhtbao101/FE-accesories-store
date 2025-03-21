@@ -16,7 +16,7 @@ import { getProducts } from '@/redux/features/product/products.slice';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.products);
+  const products: any = useAppSelector((state) => state.products);
 
   const { isLoading, error } = useAppSelector((state) => state.products);
 
@@ -39,13 +39,13 @@ const ShopPage = () => {
   }, []);
 
   // handleChanges
-  const handleChanges = (val) => {
+  const handleChanges = (val: any) => {
     setCurrPage(1);
     setPriceValue(val);
   };
 
   // selectHandleFilter
-  const selectHandleFilter = (e) => {
+  const selectHandleFilter = (e: any) => {
     setSelectValue(e.value);
   };
 

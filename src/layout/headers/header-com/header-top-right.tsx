@@ -6,7 +6,7 @@ import { userLoggedOut } from '@/redux/features/auth/authSlice';
 import { useAppSelector } from '@/lib/hook';
 
 // language
-function Language({ active, handleActive }) {
+function Language({ active, handleActive }: any) {
   return (
     <div className="tp-header-top-menu-item tp-header-lang">
       <span
@@ -32,7 +32,7 @@ function Language({ active, handleActive }) {
 }
 
 // currency
-function Currency({ active, handleActive }) {
+function Currency({ active, handleActive }: any) {
   return (
     <div className="tp-header-top-menu-item tp-header-currency">
       <span
@@ -61,7 +61,7 @@ function Currency({ active, handleActive }) {
 }
 
 // setting
-function ProfileSetting({ active, handleActive }) {
+function ProfileSetting({ active, handleActive }: any) {
   const { data } = useAppSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -109,7 +109,7 @@ function ProfileSetting({ active, handleActive }) {
 const HeaderTopRight = () => {
   const [active, setIsActive] = useState('');
   // handle active
-  const handleActive = (type) => {
+  const handleActive = (type: any) => {
     if (type === active) {
       setIsActive('');
     } else {

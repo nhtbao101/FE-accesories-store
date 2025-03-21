@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Pagination from '@/ui/Pagination';
-// import ProductItem from '../products/fashion/product-item';
+
 import CategoryFilter from './product-filter/category-filter';
 // import ColorFilter from './collection-filter/color-filter';
 // import PriceFilter from './collection-filter/price-filter';
@@ -12,14 +12,20 @@ import ShopListItem from './product-list-item';
 import ShopTopRight from './product-top-right';
 import ResetButton from './product-filter/reset-button';
 import CollectionTopLeft from './product-top-left';
+import ProductItem from './product-item';
 
-const ShopRightArea = ({ all_products, products, otherProps, right_side }) => {
+const ShopRightArea = ({
+  all_products,
+  products,
+  otherProps,
+  right_side
+}: any) => {
   const { selectHandleFilter, currPage, setCurrPage } = otherProps;
   const [filteredRows, setFilteredRows] = useState(products);
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
 
-  const paginatedData = (items, startPage, pageCount) => {
+  const paginatedData = (items: any, startPage: any, pageCount: any) => {
     setFilteredRows(items);
     setPageStart(startPage);
     setCountOfPage(pageCount);
@@ -73,7 +79,7 @@ const ShopRightArea = ({ all_products, products, otherProps, right_side }) => {
                           {filteredRows &&
                             filteredRows
                               .slice(pageStart, pageStart + countOfPage)
-                              .map((item, index: number) => (
+                              .map((item: any, index: number) => (
                                 <div
                                   key={index}
                                   className="col-xl-4 col-md-6 col-sm-6"
@@ -96,7 +102,7 @@ const ShopRightArea = ({ all_products, products, otherProps, right_side }) => {
                               {filteredRows &&
                                 filteredRows
                                   .slice(pageStart, pageStart + countOfPage)
-                                  .map((item) => (
+                                  .map((item: any) => (
                                     <ShopListItem
                                       key={item._id}
                                       product={item}

@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getLocalStorage, setLocalStorage } from "@/utils/localstorage";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { createSlice } from '@reduxjs/toolkit';
+import { getLocalStorage, setLocalStorage } from '@/utils/localstorage';
+import { notifyError, notifySuccess } from '@/utils/toast';
 
 const initialState = {
   cart_products: [],
   orderQuantity: 1,
-  cartMiniOpen:false,
+  cartMiniOpen: false
 };
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     add_cart_product: (state, { payload }) => {
@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
       if (!isExist) {
         const newItem = {
           ...payload,
-          orderQuantity: state.orderQuantity,
+          orderQuantity: state.orderQuantity
         };
         state.cart_products.push(newItem);
         notifySuccess(`${state.orderQuantity} ${payload.title} added to cart`);
@@ -29,21 +29,23 @@ export const cartSlice = createSlice({
                 state.orderQuantity !== 1
                   ? state.orderQuantity + item.orderQuantity
                   : item.orderQuantity + 1;
-              notifySuccess(`${state.orderQuantity} ${item.title} added to cart`);
+              notifySuccess(
+                `${state.orderQuantity} ${item.title} added to cart`
+              );
             } else {
-              notifyError("No more quantity available for this product!");
+              notifyError('No more quantity available for this product!');
               state.orderQuantity = 1;
             }
           }
           return { ...item };
         });
       }
-      setLocalStorage("cart_products", state.cart_products);
+      setLocalStorage('cart_products', state.cart_products);
     },
-    increment: (state, { payload }) => {
+    increment: (state) => {
       state.orderQuantity = state.orderQuantity + 1;
     },
-    decrement: (state, { payload }) => {
+    decrement: (state) => {
       state.orderQuantity =
         state.orderQuantity > 1
           ? state.orderQuantity - 1
@@ -58,35 +60,37 @@ export const cartSlice = createSlice({
         }
         return { ...item };
       });
-      setLocalStorage("cart_products", state.cart_products);
+      setLocalStorage('cart_products', state.cart_products);
     },
     remove_product: (state, { payload }) => {
       state.cart_products = state.cart_products.filter(
         (item) => item._id !== payload.id
       );
-      setLocalStorage("cart_products", state.cart_products);
+      setLocalStorage('cart_products', state.cart_products);
       notifyError(`${payload.title} Remove from cart`);
     },
     get_cart_products: (state, action) => {
-      state.cart_products = getLocalStorage("cart_products");
+      state.cart_products = getLocalStorage('cart_products');
     },
     initialOrderQuantity: (state, { payload }) => {
       state.orderQuantity = 1;
     },
-    clearCart:(state) => {
-      const isClearCart = window.confirm('Are you sure you want to remove all items ?');
-      if(isClearCart){
-        state.cart_products = []
+    clearCart: (state) => {
+      const isClearCart = window.confirm(
+        'Are you sure you want to remove all items ?'
+      );
+      if (isClearCart) {
+        state.cart_products = [];
       }
-      setLocalStorage("cart_products", state.cart_products);
+      setLocalStorage('cart_products', state.cart_products);
     },
-    openCartMini:(state,{payload}) => {
-      state.cartMiniOpen = true
+    openCartMini: (state, { payload }) => {
+      state.cartMiniOpen = true;
     },
-    closeCartMini:(state,{payload}) => {
-      state.cartMiniOpen = false
-    },
-  },
+    closeCartMini: (state, { payload }) => {
+      state.cartMiniOpen = false;
+    }
+  }
 });
 
 export const {
@@ -99,6 +103,6 @@ export const {
   initialOrderQuantity,
   clearCart,
   closeCartMini,
-  openCartMini,
+  openCartMini
 } = cartSlice.actions;
 export default cartSlice.reducer;

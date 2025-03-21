@@ -59,7 +59,7 @@ const adminSlice = createSlice({
       removeLS('userInfo');
     });
 
-    builder.addCase(adminLogin.rejected, (state, { payload }) => {
+    builder.addCase(adminLogin.rejected, (state: any, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     });

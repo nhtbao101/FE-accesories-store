@@ -7,15 +7,16 @@ import { useGetShowCategoryQuery } from '@/redux/features/categoryApi';
 import { handleFilterSidebarClose } from '@/redux/features/shop-filter-slice';
 import ShopCategoryLoader from '@/components/loader/shop/shop-category-loader';
 
-const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
-  const { data: categories, isLoading, isError } = useGetShowCategoryQuery();
+const CategoryFilter = ({ setCurrPage, shop_right = false }: any) => {
+  const { data: categories, isLoading, isError } = useGetShowCategoryQuery(1);
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  console.log('categories filter', categories);
   const dispatch = useDispatch();
 
   // handle category route
-  const handleCategoryRoute = (title) => {
+  const handleCategoryRoute = (title: any) => {
     setCurrPage(1);
     router.push(
       `/${shop_right ? 'shop-right-sidebar' : 'shop'}?category=${title
@@ -24,7 +25,7 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
         .split(' ')
         .join('-')}`
     );
-    dispatch(handleFilterSidebarClose());
+    // dispatch(handleFilterSidebarClose());
   };
   // decide what to render
   let content = null;
@@ -40,7 +41,7 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
   }
   if (!isLoading && !isError && categories?.result?.length > 0) {
     const category_items = categories.result;
-    content = category_items.map((item) => (
+    content = category_items.map((item: any) => (
       <li key={item._id}>
         <a
           onClick={() => handleCategoryRoute(item.parent)}
