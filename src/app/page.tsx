@@ -7,7 +7,7 @@ import JewelryBanner from '@/components/banner/jewelry-banner';
 import JewelryShopBanner from '@/components/shop-banner/jewelry-shop-banner';
 // import JewelryAbout from '@/components/about/jewelry-about';
 import PopularProducts from '@/components/products/popular-products';
-import ProductArea from '@/components/products/product-area';
+import ProductArea from '@/components/product-details/product-area';
 import JewelryCollectionBanner from '@/components/shop-banner/jewelry-collection-banner';
 import BestSellerPrd from '@/components/products/best-seller-prd';
 import InstagramAreaFour from '@/components/instagram/instagram-area-4';

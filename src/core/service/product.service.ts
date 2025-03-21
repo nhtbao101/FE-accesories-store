@@ -13,7 +13,15 @@ export class ProductService {
     return await this.http.get([`${ENDPOINT.product.index}/${slug}`]);
   }
 
-  async createProduct(data: Product) {
-    return await this.http.post([`${ENDPOINT.manage.createProduct}`], data);
+  async createProduct(body: Product) {
+    return await this.http.post([`${ENDPOINT.manage.createProduct}`], body);
+  }
+
+  async updateProduct(id: number, body: Product) {
+    return await this.http.put([`${ENDPOINT.product.index}/${id}/update`], body);
+  }
+
+  async deleteProduct(id: number) {
+    return await this.http.delete([`${ENDPOINT.product.index}/${id}/delete`]);
   }
 }

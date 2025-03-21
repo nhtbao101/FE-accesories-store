@@ -69,7 +69,7 @@ const ShopArea = ({
                         showing={
                           products?.length === 0
                             ? 0
-                            : filteredRows &&
+                            : filteredRows.length &&
                               filteredRows.slice(
                                 pageStart,
                                 pageStart + countOfPage
@@ -95,7 +95,7 @@ const ShopArea = ({
                         tabIndex={0}
                       >
                         <div className="row">
-                          {filteredRows &&
+                          {filteredRows.length &&
                             filteredRows
                               .slice(pageStart, pageStart + countOfPage)
                               .map((item: any, index: number) => (

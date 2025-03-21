@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import ProductForm from './productForm';
-import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
+import ProductForm from '../../../components/products/productForm';
+import ShopBreadcrumb from '../../../components/breadcrumb/shop-breadcrumb';
 
 const CreateProduct = () => {
   return (

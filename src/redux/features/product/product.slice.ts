@@ -12,7 +12,8 @@ const initialState = {
     data: null,
     error: null
   },
-  add: initProcessState
+  add: initProcessState,
+  update: initProcessState
 };
 
 export const getProduct = createAsyncThunk(
@@ -20,6 +21,7 @@ export const getProduct = createAsyncThunk(
   async (slug: string) => {
     try {
       const res = await product.getProduct(slug);
+      // console.log('res', res);
       return res;
     } catch (error) {
       return error;
@@ -39,6 +41,30 @@ export const createProduct = createAsyncThunk(
   }
 );
 
+export const updateProduct = createAsyncThunk(
+  'product/updateProduct',
+  async (data: { id: number; body: Product }, { rejectWithValue }) => {
+    try {
+      const res = await product.updateProduct(data.id, data.body);
+      return res;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  'product/deleteProduct',
+  async (data: { id: number; body: Product }, { rejectWithValue }) => {
+    try {
+      const res = await product.deleteProduct(data.id);
+      return res;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -49,9 +75,11 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getProduct.pending, (state) => {
+        console.log('get product pending');
         state.detail.isLoading = true;
       })
       .addCase(getProduct.fulfilled, (state: any, { payload }) => {
+        console.log('get product fulfill');
         state.detail.data = payload;
         state.detail.isSuccess = true;
         state.detail.isLoading = false;
@@ -70,6 +98,17 @@ const productSlice = createSlice({
       .addCase(createProduct.rejected, (state, { payload }: any) => {
         state.add.isLoading = false;
         state.add.error = payload.message;
+      })
+      .addCase(updateProduct.pending, (state) => {
+        state.update.isLoading = true;
+      })
+      .addCase(updateProduct.fulfilled, (state, { payload }) => {
+        state.update.isSuccess = true;
+        state.update.isLoading = false;
+      })
+      .addCase(updateProduct.rejected, (state, { payload }: any) => {
+        state.update.isLoading = false;
+        state.update.error = payload.message;
       });
   }
 });

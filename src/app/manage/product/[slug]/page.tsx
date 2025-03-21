@@ -26,7 +26,6 @@ const ProductDetailsPage = () => {
   );
 
   useEffect(() => {
-    console.log('component render');
     dispatch(getProduct(slug));
   }, [slug]);
 

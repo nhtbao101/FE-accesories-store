@@ -33,7 +33,7 @@ const ShopHiddenSidebarArea = ({ all_products, products, otherProps }: any) => {
                         showing={
                           products.length === 0
                             ? 0
-                            : filteredRows &&
+                            : filteredRows.length &&
                               filteredRows.slice(
                                 pageStart,
                                 pageStart + countOfPage
@@ -59,7 +59,7 @@ const ShopHiddenSidebarArea = ({ all_products, products, otherProps }: any) => {
                         tabIndex={0}
                       >
                         <div className="row">
-                          {filteredRows &&
+                          {filteredRows.length &&
                             filteredRows
                               .slice(pageStart, pageStart + countOfPage)
                               .map((item: any, index: number) => (
@@ -82,7 +82,7 @@ const ShopHiddenSidebarArea = ({ all_products, products, otherProps }: any) => {
                         <div className="tp-shop-list-wrapper tp-shop-item-primary mb-70">
                           <div className="row">
                             <div className="col-xl-12">
-                              {filteredRows &&
+                              {filteredRows.length &&
                                 filteredRows
                                   .slice(pageStart, pageStart + countOfPage)
                                   .map((item: any) => (

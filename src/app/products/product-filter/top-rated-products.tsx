@@ -16,8 +16,6 @@ const TopRatedProducts = () => {
   // decide what to render
   let content = null;
 
-  console.log('top rate products', products);
-
   if (isLoading) {
     content = <ShopTopRatedLoader loading={isLoading} />;
   } else if (!isLoading && isError) {

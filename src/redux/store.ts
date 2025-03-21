@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { apiSlice } from './api/apiSlice';
 import authSlice from './features/auth/authSlice';
 import cartSlice from './features/cartSlice';
@@ -13,6 +14,7 @@ import productSlice from './features/product/product.slice';
 import userSlice from './features/user.slice';
 import adminSlice from './features/admin.slice';
 import categorySlice from './features/category.slice';
+import logger from 'redux-logger';
 
 const makeStore = () =>
   configureStore({
@@ -34,6 +36,7 @@ const makeStore = () =>
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(apiSlice.middleware)
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
   });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

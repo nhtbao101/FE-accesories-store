@@ -34,10 +34,12 @@ const categorySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCategory.pending, (state) => {
+      // console.log('get category pending');
       state.isLoading = true;
     });
 
     builder.addCase(getCategory.fulfilled, (state, { payload }: any) => {
+      // console.log('get category fulfill');
       state.isLoading = false;
       state.data = payload;
       state.isSuccess = true;
