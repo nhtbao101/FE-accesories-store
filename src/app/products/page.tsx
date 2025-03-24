@@ -62,7 +62,7 @@ const ShopPage = () => {
 
   return (
     <>
-      <ShopBreadcrumb title="Shop Grid" subtitle="Shop Grid" />
+      <ShopBreadcrumb title="Product list" subtitle="Product list" />
       {isLoading ? (
         <ShopLoader loading={isLoading} />
       ) : !error && products?.data?.length === 0 ? (

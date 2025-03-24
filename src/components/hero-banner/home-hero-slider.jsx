@@ -137,7 +137,7 @@ const HomeHeroSlider = () => {
 
                       <div className="tp-slider-btn">
                         <Link
-                          href="/shop"
+                          href="/products"
                           className="tp-btn tp-btn-2 tp-btn-white"
                         >
                           Shop Now <ArrowRightLong />

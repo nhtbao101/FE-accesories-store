@@ -74,7 +74,10 @@ const FashionBanner = () => {
                         <span>{item.subtitle}</span>
                         <h3 className="tp-slider-title-2">{item.title}</h3>
                         <div className="tp-slider-btn-2">
-                          <Link href="/shop" className="tp-btn tp-btn-border">
+                          <Link
+                            href="/products"
+                            className="tp-btn tp-btn-border"
+                          >
                             Shop Collection
                           </Link>
                         </div>

@@ -142,38 +142,6 @@ const MobileMenus = () => {
                   </div>
                 </div>
               </li>
-            ) : menu.sub_menu ? (
-              <li
-                key={menu.id}
-                className={`has-dropdown ${
-                  isActiveMenu === menu.title ? 'dropdown-opened' : ''
-                }`}
-              >
-                <a
-                  className={`${isActiveMenu === menu.title ? 'expanded' : ''}`}
-                >
-                  {menu.title}
-                  <button
-                    onClick={() => handleOpenSubMenu(menu.title)}
-                    className={`dropdown-toggle-btn ${
-                      isActiveMenu === menu.title ? 'dropdown-opened' : ''
-                    }`}
-                  >
-                    <i className="fa-regular fa-angle-right"></i>
-                  </button>
-                </a>
-                <ul
-                  className={`tp-submenu ${
-                    isActiveMenu === menu.title ? 'active' : ''
-                  }`}
-                >
-                  {menu.sub_menus.map((b, i) => (
-                    <li key={i}>
-                      <Link href={b.link}>{b.title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
             ) : (
               <li key={menu.id}>
                 <Link href={menu.link}>{menu.title}</Link>

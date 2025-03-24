@@ -53,11 +53,11 @@ const ShopArea = ({
                 {/* color */}
                 {/* <ColorFilter setCurrPage={setCurrPage} /> */}
                 {/* product rating */}
-                <TopRatedProducts />
+                {/* <TopRatedProducts /> */}
                 {/* brand */}
                 {/* <ProductBrand setCurrPage={setCurrPage} /> */}
                 {/* reset filter */}
-                <ResetButton />
+                {/* <ResetButton /> */}
               </div>
             </div>
             <div className="col-xl-9 col-lg-8">

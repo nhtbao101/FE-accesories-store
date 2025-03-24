@@ -73,9 +73,9 @@ const Footer = ({
                       <li>
                         <a href="#">Order History</a>
                       </li>
-                      <li>
+                      {/* <li>
                         <a href="#">Returns</a>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -85,24 +85,22 @@ const Footer = ({
                   <h4 className="tp-footer-widget-title">Information</h4>
                   <div className="tp-footer-widget-content">
                     <ul>
-                      <li>
+                      {/* <li>
                         <a href="#">Our Story</a>
-                      </li>
-                      <li>
-                        <a href="#">Careers</a>
-                      </li>
+                      </li> */}
+                      {/* <li><a href="#">Careers</a></li> */}
                       <li>
                         <a href="#">Privacy Policy</a>
                       </li>
                       <li>
                         <a href="#">Terms & Conditions</a>
                       </li>
-                      <li>
+                      {/* <li>
                         <a href="#">Latest News</a>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <a href="#">Contact Us</a>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </div>
@@ -114,7 +112,7 @@ const Footer = ({
                     <div className="tp-footer-talk mb-20">
                       <span>Got Questions? Call us</span>
                       <h4>
-                        <a href="tel:670-413-90-762">+966 595 035 008</a>
+                        <a href="tel:0912345678">+8412 345 678</a>
                       </h4>
                     </div>
                     <div className="tp-footer-contact">
@@ -127,7 +125,7 @@ const Footer = ({
                         <div className="tp-footer-contact-content">
                           <p>
                             <a href="mailto:shofy@support.com">
-                              swe.hamedhasan@gmail.com
+                              chan.chan.bakery@gmail.com
                             </a>
                           </p>
                         </div>
@@ -163,8 +161,8 @@ const Footer = ({
                 <div className="col-md-6">
                   <div className="tp-footer-copyright">
                     <p>
-                      © {new Date().getFullYear()} All Rights Reserved | Next js
-                      Template by
+                      © {new Date().getFullYear()} All Rights Reserved |
+                      Designed by Bao Nguyen
                       <Link href="/"> ❤</Link>.
                     </p>
                   </div>

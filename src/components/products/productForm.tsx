@@ -213,7 +213,7 @@ const ProductForm = (props: Props) => {
                         </div>
                         {errors.name?.message && (
                           <p className="error-msg mt-1">
-                            {errors.name?.message}
+                            {`${errors.name?.message}`}
                           </p>
                         )}
                       </div>
@@ -243,7 +243,7 @@ const ProductForm = (props: Props) => {
                         </div>
                         {errors.description?.message && (
                           <p className="error-msg mt-1">
-                            {errors.description?.message}
+                            {`${errors.description?.message}`}
                           </p>
                         )}
                       </div>
@@ -302,7 +302,7 @@ const ProductForm = (props: Props) => {
                         </div>
                         {errors.quantity?.message && (
                           <p className="error-msg mt-1">
-                            {errors.quantity?.message}
+                            {`${errors.quantity?.message}`}
                           </p>
                         )}
                       </div>
@@ -329,7 +329,7 @@ const ProductForm = (props: Props) => {
                         />
                         {errors.price?.message && (
                           <p className="error-msg mt-1">
-                            {errors.price?.message}
+                            {`${errors.price?.message}`}
                           </p>
                         )}
                       </div>

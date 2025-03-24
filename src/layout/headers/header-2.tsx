@@ -57,7 +57,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                         <span>
                           <PhoneTwo />
                         </span>{' '}
-                        0347859494
+                        0912345678
                       </a>
                     </div>
                   </div>

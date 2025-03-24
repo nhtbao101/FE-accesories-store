@@ -120,7 +120,7 @@ const BeautyBanner = () => {
                       </div>
                       <div className="tp-slider-btn-3">
                         <Link
-                          href="/shop"
+                          href="/products"
                           className="tp-btn tp-btn-border tp-btn-border-white"
                         >
                           Discover Now

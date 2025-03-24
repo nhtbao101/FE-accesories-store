@@ -23,12 +23,12 @@ const BeautyOfferBanner = () => {
                 <div className="tp-collection-content">
                   <span>Cosmetics Collection</span>
                   <h3 className="tp-collection-title">
-                    <Link href="/shop">
+                    <Link href="/products">
                       Foundation and <br /> powder brush
                     </Link>
                   </h3>
                   <div className="tp-collection-btn">
-                    <Link href="/shop" className="tp-btn">
+                    <Link href="/products" className="tp-btn">
                       Discover Now <ArrowRightSmTwo />
                     </Link>
                   </div>
@@ -43,12 +43,12 @@ const BeautyOfferBanner = () => {
                 ></div>
                 <div className="tp-collection-content-1">
                   <h3 className="tp-collection-title-1">
-                    <Link href="/shop">
+                    <Link href="/products">
                       Tops <br /> Blouse Shirts
                     </Link>
                   </h3>
                   <div className="tp-collection-btn-1">
-                    <Link href="/shop" className="tp-link-btn-line">
+                    <Link href="/products" className="tp-link-btn-line">
                       Shop Collection
                     </Link>
                   </div>
