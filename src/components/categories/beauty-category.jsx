@@ -85,7 +85,7 @@ const BeautyCategory = () => {
             </div>
             <div className="col-lg-6 col-md-4">
               <div className="tp-category-more-3 text-md-end mb-55">
-                <Link href="/shop" className="tp-btn">
+                <Link href="/products" className="tp-btn">
                   Shop All Products <ArrowRightSmTwo />
                 </Link>
               </div>

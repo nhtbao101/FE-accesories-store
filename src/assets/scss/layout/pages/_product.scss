@@ -1,8 +1,16 @@
+@use '../../utils' as *;
+
 .product-wrapper {
   .product-item {
     img {
       max-width: 290px;
       max-height: 290px;
+    }
+    @media #{$xs} {
+      img {
+        max-width: initial;
+        max-height: initial;
+      }
     }
   }
 }

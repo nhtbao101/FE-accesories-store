@@ -49,7 +49,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                         <span>
                           <Facebook />
                         </span>{' '}
-                        7500k Followers
+                        2 Followers
                       </a>
                     </div>
                     <div className="tp-header-info-item">
@@ -57,7 +57,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                         <span>
                           <PhoneTwo />
                         </span>{' '}
-                        +(966) 595 035 008
+                        0912345678
                       </a>
                     </div>
                   </div>

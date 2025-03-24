@@ -64,7 +64,7 @@ const JewelryCollectionBanner = () => {
                           BUILD YOUR OWN SETS
                         </span>
                         <div className="tp-collection-thumb-banner-4 m-img">
-                          <Link href="/shop">
+                          <Link href="/products">
                             <Image
                               src={collection_sm}
                               alt="collection_sm img"
@@ -73,10 +73,13 @@ const JewelryCollectionBanner = () => {
                         </div>
                         <div className="tp-collection-content-4">
                           <h3 className="tp-collection-title-4">
-                            <Link href="/shop">Our finest jewelry</Link>
+                            <Link href="/products">Our finest jewelry</Link>
                           </h3>
                           <div className="tp-collection-btn-4">
-                            <Link href="/shop" className="tp-link-btn-line-2">
+                            <Link
+                              href="/products"
+                              className="tp-link-btn-line-2"
+                            >
                               Shop this collection <ArrowRightSm />
                             </Link>
                           </div>

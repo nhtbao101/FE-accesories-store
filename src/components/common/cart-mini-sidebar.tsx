@@ -24,6 +24,8 @@ const CartMiniSidebar = () => {
   const handleCloseCartMini = () => {
     dispatch(closeCartMini(null));
   };
+
+  console.log('cart_products', cart_products);
   return (
     <>
       <div
@@ -57,7 +59,7 @@ const CartMiniSidebar = () => {
                     <div className="cartmini__thumb">
                       <Link href={`/products/${index}`}>
                         <Image
-                          src={item.image || item.img}
+                          src={item.images[0].url}
                           width={70}
                           height={60}
                           alt="product img"
@@ -105,7 +107,7 @@ const CartMiniSidebar = () => {
               <div className="cartmini__empty text-center">
                 <Image src={empty_cart_img} alt="empty-cart-img" />
                 <p>Your Cart is empty</p>
-                <Link href="/shop" className="tp-btn">
+                <Link href="/products" className="tp-btn">
                   Go to Shop
                 </Link>
               </div>

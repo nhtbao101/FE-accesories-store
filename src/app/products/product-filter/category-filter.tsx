@@ -12,7 +12,7 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }: any) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  console.log('categories filter', categories);
+  // console.log('categories filter', categories);
   const dispatch = useDispatch();
 
   // handle category route

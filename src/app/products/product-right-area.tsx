@@ -154,14 +154,14 @@ const ShopRightArea = ({
                   shop_right={right_side}
                 /> */}
                 {/* product rating */}
-                <TopRatedProducts />
+                {/* <TopRatedProducts /> */}
                 {/* brand */}
                 {/* <ProductBrand
                   setCurrPage={setCurrPage}
                   shop_right={right_side}
                 /> */}
                 {/* reset filter */}
-                <ResetButton shop_right={right_side} />
+                {/* <ResetButton shop_right={right_side} /> */}
               </div>
             </div>
           </div>

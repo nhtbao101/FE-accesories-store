@@ -9,7 +9,7 @@ import { add_cart_product } from '@/redux/features/cartSlice';
 import { add_to_wishlist } from '@/redux/features/wishlist-slice';
 
 const ProductItem = ({ product }: any) => {
-  const { slug, image, name, price } = product || {};
+  const { slug, images, name, price } = product || {};
   const { cart_products } = useSelector((state: any) => state.cart);
   const { wishlist } = useSelector((state: any) => state.wishlist);
   const isAddedToCart = cart_products.some((prd: any) => prd.slug === slug);
@@ -21,6 +21,7 @@ const ProductItem = ({ product }: any) => {
     dispatch(add_cart_product(prd));
   };
 
+  console.log('productX', product);
   // handle wishlist product
   const handleWishlistProduct = (prd: any) => {
     dispatch(add_to_wishlist(prd));
@@ -30,7 +31,12 @@ const ProductItem = ({ product }: any) => {
     <div className="tp-product-item-4 p-relative mb-40">
       <div className="tp-product-thumb-4 p-relative fix">
         <Link href={`/products/${slug}`}>
-          <Image src={image} alt="product img" width={284} height={352} />
+          <Image
+            src={images[0].url}
+            alt="product img"
+            width={284}
+            height={352}
+          />
         </Link>
         <div className="tp-product-badge">
           {status === 'out-of-stock' && (

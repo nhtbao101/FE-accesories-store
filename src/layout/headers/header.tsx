@@ -80,8 +80,6 @@ const Header = () => {
   const { sticky } = useSticky();
   const dispatch = useDispatch();
 
-  console.log('userInfo', userInfo);
-
   const accountMenu = [
     {
       label: 'Account',

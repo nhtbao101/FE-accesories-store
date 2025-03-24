@@ -51,7 +51,7 @@ const JewelryShopBanner = () => {
                     content="Collection"
                     title={
                       <>
-                        Ardeco pearl <br /> Rings style 2023
+                        Ardeco pearl <br /> Bakery style 2025
                       </>
                     }
                     isBtn={true}
