@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hook';
 import { getCategory } from '@/redux/features/category/category.slice';
 import CategorySkeleton from '@/components/skeleton/categoryFilter';
 
-const CategoryFilter = () => {
+const CategoryFilter = ({ setCurrPage }: any) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
@@ -22,6 +22,7 @@ const CategoryFilter = () => {
 
   const handleCategoryRoute = useCallback(
     (categoryId?: number) => {
+      setCurrPage(1);
       const params = new URLSearchParams(searchParams.toString());
       if (categoryId) {
         params.set('categoryId', categoryId.toString());
