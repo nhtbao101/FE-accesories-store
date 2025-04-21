@@ -1,38 +1,38 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
 const useSearchFormSubmit = () => {
   const router = useRouter();
-  const [searchText, setSearchText] = useState('');
-  const [category, setCategory] = useState('');
+  const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
+
+  const [productName, setProductName] = useState(
+    params.get('productName') || ''
+  );
+  const [categoryId, setCategoryId] = useState(params.get('categoryId') || '');
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    if (searchText) {
-      let route = `/search?searchText=${searchText}`;
-
-      if (category && category !== 'Select Category') {
-        route += `&productType=${category}`;
-        setCategory('');
-      }
-
-      router.push(route, { scroll: false });
-      setSearchText('');
+    if (productName) {
+      params.set('productName', productName);
+      router.push(`products?${params.toString()}`, { scroll: false });
     } else {
-      router.push(`/`, { scroll: false });
-      setSearchText('');
-      setCategory('');
+      params.delete('productName');
+      router.push(`products?${params.toString()}`, {
+        scroll: false
+      });
     }
   };
 
   return {
-    searchText,
-    category,
-    setSearchText,
-    setCategory,
+    productName,
+    categoryId,
+    setProductName,
+    setCategoryId,
     handleSubmit
   };
 };

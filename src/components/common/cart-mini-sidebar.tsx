@@ -25,7 +25,6 @@ const CartMiniSidebar = () => {
     dispatch(closeCartMini(null));
   };
 
-  console.log('cart_products', cart_products);
   return (
     <>
       <div

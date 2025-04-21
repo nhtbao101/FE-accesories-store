@@ -17,6 +17,10 @@ select {
     margin: 20px;
   }
 
+  textarea {
+    height: auto !important;
+  }
+
   .file-input__input {
     width: 0.1px;
     height: 0.1px;

@@ -1,4 +1,5 @@
 import { ProductService } from '@/core/service/product.service';
+import { productQuery } from '@/core/types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const productService = new ProductService();
@@ -10,14 +11,18 @@ const initialState = {
   error: null
 };
 
-export const getProducts = createAsyncThunk('product/getProducts', async () => {
-  try {
-    const res = await productService.getProducts();
-    return res;
-  } catch (error) {
-    return error;
+export const getProducts = createAsyncThunk(
+  'product/getProducts',
+  async (query?: productQuery) => {
+    console.log('query', query);
+    try {
+      const res = await productService.getProducts(query);
+      return res;
+    } catch (error) {
+      return error;
+    }
   }
-});
+);
 
 const productsSlice = createSlice({
   name: 'products',
