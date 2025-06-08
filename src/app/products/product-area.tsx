@@ -7,6 +7,8 @@ import ShopTopLeft from './product-top-left';
 import ShopTopRight from './product-top-right';
 import ResetButton from './product-filter/reset-button';
 import ProductItem from './product-item';
+import CakeEmpty from '@assets/img/product/cake-empty.webp';
+import Image from 'next/image';
 
 const ShopArea = ({
   all_products,
@@ -83,7 +85,19 @@ const ShopArea = ({
                     </div>
                   </div>
                 </div>
-                {products?.length === 0 && <h2>No products found</h2>}
+                {products?.length === 0 && (
+                  <div className="prd-not-found image-wrapper text-center">
+                    <Image
+                      className="prd-not-found-img"
+                      src={CakeEmpty}
+                      alt="sold out"
+                    />
+                    <h4>
+                      Sản phẩm không tồn tại, vui lòng xem các loại sản phẩm
+                      khác
+                    </h4>
+                  </div>
+                )}
                 {products?.length > 0 && (
                   <div className="tp-shop-items-wrapper tp-shop-item-primary">
                     <div className="tab-content" id="productTabContent">

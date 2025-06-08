@@ -38,7 +38,7 @@ function BannerItem({ cls, bg_clr, bg, content, title, isBtn = false }: any) {
 const JewelryShopBanner = () => {
   return (
     <>
-      <section className="tp-banner-area">
+      <section className="tp-banner-area mb-40">
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-7">

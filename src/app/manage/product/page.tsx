@@ -2,19 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
+import { useRouter, useSearchParams } from 'next/navigation';
 
+import ErrorMsg from '@/components/common/error-msg';
 import ShopFilterOffCanvas from '@/components/common/shop-filter-offcanvas';
 import ShopLoader from '@/components/loader/shop/shop-loader';
-import ShopArea from './product-area';
+
 import { useAppDispatch, useAppSelector } from '@/lib/hook';
 import { getProducts } from '@/redux/features/product/products.slice';
-import { useSearchParams } from 'next/navigation';
+import ShopArea from '@/app/products/product-area';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
-  const categoryId = useSearchParams().get('categoryId');
-  const productName = useSearchParams().get('productName');
+  const navigation = useRouter();
   const products: any = useAppSelector((state) => state.products);
+  const query = useSearchParams().get('category');
 
   const { isLoading, error } = useAppSelector((state) => state.products);
 
@@ -33,13 +35,8 @@ const ShopPage = () => {
   // }, [isLoading, isError, products]);
 
   useEffect(() => {
-    dispatch(
-      getProducts({
-        categoryId: categoryId || '',
-        productName: productName || ''
-      })
-    );
-  }, [categoryId, productName || '']);
+    dispatch(getProducts());
+  }, []);
 
   // handleChanges
   const handleChanges = (val: any) => {
@@ -68,15 +65,22 @@ const ShopPage = () => {
       <ShopBreadcrumb title="Product list" subtitle="Product list" />
       {isLoading ? (
         <ShopLoader loading={isLoading} />
+      ) : !error && products?.data?.length === 0 ? (
+        <ErrorMsg msg="No Products found!" />
       ) : (
-        // : !error && products?.data?.length === 0 ? (
-        //   // <ErrorMsg msg="No Products found!" />
-        //   <div>
-        //     <Image src={CakeEmpty} alt="sold out" />
-        //   </div>
-        //   )
         products.data && (
           <>
+            <div className="container">
+              <div className="mb-40 d-flex justify-content-end btn-create-prd">
+                <a
+                  onClick={() => navigation.push('/manage/create-product')}
+                  type="button"
+                  className="tp-filter-btn"
+                >
+                  Create product
+                </a>
+              </div>
+            </div>
             <ShopArea
               all_products={products.data}
               products={products.data}

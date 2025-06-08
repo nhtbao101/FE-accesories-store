@@ -67,20 +67,12 @@ const ProductForm = (props: Props) => {
     isSuccess
   } = useAppSelector((state) => state.product.add);
 
-  // console.log('product form data prop', props.data);
-  // console.log(
-  //   'product form',
-  //   useAppSelector((state) => state.product)
-  // );
-
   useEffect(() => {
     // console.log('mount category');
     if (categories) {
-      console.log('has category');
-      // setValue('categoryId', (categories as any)[0].id);
+      setValue('categoryId', (categories as any)[0].id);
     } else {
-      console.log('get category');
-      // dispatch(getCategory());
+      dispatch(getCategory());
     }
     return () => {
       dispatch(clearAddProduct());
@@ -239,6 +231,7 @@ const ProductForm = (props: Props) => {
                             onChange={onChange}
                             onBlur={onBlur}
                             value={value}
+                            rows={4}
                           ></textarea>
                         </div>
                         {errors.description?.message && (

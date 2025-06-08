@@ -27,7 +27,7 @@ import OffCanvas from '@/components/common/off-canvas';
 const HeaderTwo = ({ style_2 = false }) => {
   const { wishlist } = useSelector((state: any) => state.wishlist);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
-  const { setSearchText, handleSubmit, searchText } = useSearchFormSubmit();
+  const { setProductName, handleSubmit, productName } = useSearchFormSubmit();
   const { quantity } = useCartInfo();
   const { sticky } = useSticky();
   const dispatch = useDispatch();
@@ -98,8 +98,8 @@ const HeaderTwo = ({ style_2 = false }) => {
                       <div className="tp-header-search-2 d-none d-sm-block">
                         <form onSubmit={handleSubmit}>
                           <input
-                            onChange={(e) => setSearchText(e.target.value)}
-                            value={searchText}
+                            onChange={(e) => setProductName(e.target.value)}
+                            value={productName}
                             type="text"
                             placeholder="Search for Products..."
                           />

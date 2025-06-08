@@ -4537,7 +4537,7 @@
 .fa-dollar-sign:before,
 .fa-dollar:before,
 .fa-usd:before {
-  content: '$';
+  content: 'VND';
 }
 
 .fa-dolly-box:before,

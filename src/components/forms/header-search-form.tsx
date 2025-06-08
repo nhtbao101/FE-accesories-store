@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { Search } from '@/assets/svg';
 import NiceSelect from '@/ui/nice-select';
 import useSearchFormSubmit from '@/hooks/use-search-form-submit';
+import { setPriority } from 'os';
 
 const HeaderSearchForm = () => {
-  const { setSearchText, setCategory, handleSubmit, searchText } =
-    useSearchFormSubmit();
+  const { productName, handleSubmit, setProductName } = useSearchFormSubmit();
 
   // selectHandle
   const selectCategoryHandle = (e: any) => {
-    setCategory(e.value);
+    setPriority(e.value);
   };
 
   return (
@@ -18,8 +18,8 @@ const HeaderSearchForm = () => {
       <div className="tp-header-search-wrapper d-flex align-items-center">
         <div className="tp-header-search-box">
           <input
-            onChange={(e) => setSearchText(e.target.value)}
-            value={searchText}
+            onChange={(e) => setProductName(e.target.value)}
+            value={productName}
             type="text"
             placeholder="Search for Products..."
           />

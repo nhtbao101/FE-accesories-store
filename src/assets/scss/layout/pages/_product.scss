@@ -13,4 +13,12 @@
       }
     }
   }
+
+  .prd-not-found {
+    padding-top: 40px;
+    &-img {
+      max-width: 40%;
+      height: auto;
+    }
+  }
 }
